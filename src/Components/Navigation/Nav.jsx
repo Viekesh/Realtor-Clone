@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './nav.scss';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { NavLink } from 'react-router-dom';
-import {NavigationLinks} from "../../Data/NavigationData";
+import { NavigationLinks } from "../../Data/NavigationData";
+import { auth } from '../../FirebaseConfig';
 
 const Nav = () => {
 
@@ -12,6 +13,20 @@ const Nav = () => {
     setShowMenu(!showMenu);
     document.querySelector("body").classList.toggle("body-overflow-visible");
   }
+
+  const [userName, setUserName] = useState(null);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        setUserName(authUser);
+      } else {
+        setUserName(null);
+      }
+    })
+  })
+
+  const userID = userName?.uid;
 
   return (
     <>
@@ -34,9 +49,16 @@ const Nav = () => {
           </div>
 
           <div className="profile_link x_y_axis_center">
-            <NavLink to="/" className="x_y_axis_center">
-              <AccountCircleIcon />
-            </NavLink>
+            {
+              userID ?
+                (<NavLink to="/Profile" className="x_y_axis_center">
+                  <AccountCircleIcon />
+                </NavLink>)
+                :
+                (<NavLink to="/SignIn" className="x_y_axis_center">
+                  <AccountCircleIcon />
+                </NavLink>)
+            }
           </div>
 
           <div className={`navigation_section ${showMenu ? "overlay" : ""}`} id='nav_links'>
@@ -44,9 +66,9 @@ const Nav = () => {
               {
                 NavigationLinks.map((getData) => {
                   return (
-                  <NavLink to={getData.link} key={getData.id}>
-                    {getData.name}
-                  </NavLink>
+                    <NavLink to={getData.link} key={getData.id}>
+                      {getData.name}
+                    </NavLink>
                   )
                 })
               }
