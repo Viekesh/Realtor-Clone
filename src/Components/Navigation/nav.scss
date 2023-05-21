@@ -41,6 +41,28 @@
     transform: translateX(0px);
 }
 
+.navigation_links {
+    margin: 60px auto;
+    height: 360px;
+    padding: 0 12px;
+}
+
+.navigation_links a {
+    border: 3px solid snow;
+    border-radius: 3vw;
+    margin: 1em auto;
+    padding: .5em .6em;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: snow;
+    font-size: 15px;
+    font-family: 'Kanit', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
 // Menu Icon Start
 
 .menu_icon {
@@ -146,3 +168,7 @@
 }
 
 // Menu Icon End
+
+
+
+

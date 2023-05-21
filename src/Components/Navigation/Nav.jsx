@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './nav.scss';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { NavLink } from 'react-router-dom';
+import {NavigationLinks} from "../../Data/NavigationData";
 
 const Nav = () => {
 
@@ -38,7 +39,20 @@ const Nav = () => {
             </NavLink>
           </div>
 
-          <div className={`navigation_section ${showMenu ? "overlay" : ""}`} id='nav_links'></div>
+          <div className={`navigation_section ${showMenu ? "overlay" : ""}`} id='nav_links'>
+            <div className="navigation_links">
+              {
+                NavigationLinks.map((getData) => {
+                  return (
+                  <NavLink to={getData.link} key={getData.id}>
+                    {getData.name}
+                  </NavLink>
+                  )
+                })
+              }
+            </div>
+          </div>
+
         </div>
       </div>
     </>
