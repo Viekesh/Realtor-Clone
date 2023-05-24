@@ -18,7 +18,7 @@
     background-color: red;
 }
 
-.profile_link>a .MuiSvgIcon-root {
+.profile_link>section .MuiSvgIcon-root {
     font-size: 30px;
     font-weight: 900;
     color: snow;
@@ -33,7 +33,7 @@
     top: 0;
     left: 0;
     transform: translateX(-100%);
-    transition: transform 0.2s ease-in-out 0s;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: 4;
 }
 
@@ -61,6 +61,44 @@
     font-family: 'Kanit', sans-serif;
     font-style: italic;
     font-weight: bold;
+}
+
+// Navigation End
+
+
+// Profile End
+
+.profile {
+    border: 3px solid blue;
+    padding: 18px 0;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    margin-top: -33vh;
+    /* Negative half of height. */
+    margin-left: -45vw;
+    /* Negative half of width. */
+
+    background-color: rgba(255, 233, 233, 0.45);
+    box-shadow: 3px 3px 9px 0 rgba(0, 17, 255, 0.37);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    width: 90vw;
+    height: auto;
+    transform: translateY(-200%);
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+// Profile End
+
+.profile.profile_overlay {
+    transform: translateY(0%);
 }
 
 // Menu Icon Start
@@ -168,7 +206,3 @@
 }
 
 // Menu Icon End
-
-
-
-

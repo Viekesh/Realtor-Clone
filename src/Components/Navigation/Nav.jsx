@@ -4,6 +4,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { NavLink } from 'react-router-dom';
 import { NavigationLinks } from "../../Data/NavigationData";
 import { auth } from '../../FirebaseConfig';
+import Profile from '../Authentication/Profile';
+import Register from '../Authentication/Register';
+import SignIn from '../Authentication/SignIn';
 
 const Nav = () => {
 
@@ -13,6 +16,17 @@ const Nav = () => {
     setShowMenu(!showMenu);
     document.querySelector("body").classList.toggle("body-overflow-visible");
   }
+
+
+
+  const [showProfile, setShowProfile] = useState(false);
+
+  const toggleProfileWindow = () => {
+    setShowProfile(!showProfile);
+    document.querySelector("body").classList.toggle("body-overflow-visible");
+  }
+
+
 
   const [userName, setUserName] = useState(null);
 
@@ -28,6 +42,8 @@ const Nav = () => {
 
   const userID = userName?.uid;
 
+
+
   return (
     <>
       <div className="navigation x_y_axis_center">
@@ -36,8 +52,7 @@ const Nav = () => {
           <div className="menu_icon">
             <div className="only-mobile mobile-menu-button-wrapper">
               <button
-                className={`hamburger hamburger--3dx x_y_axis_center ${showMenu ? "is-active" : ""
-                  }`}
+                className={`hamburger hamburger--3dx x_y_axis_center ${showMenu ? "is-active" : ""}`}
                 type="button"
                 onClick={toggleMobileMenu}
               >
@@ -51,14 +66,19 @@ const Nav = () => {
           <div className="profile_link x_y_axis_center">
             {
               userID ?
-                (<NavLink to="/Profile" className="x_y_axis_center">
+                (<section className="x_y_axis_center">
                   <AccountCircleIcon />
-                </NavLink>)
+                </section>)
                 :
-                (<NavLink to="/SignIn" className="x_y_axis_center">
+                (<section className={`x_y_axis_center`} onClick={toggleProfileWindow}>
                   <AccountCircleIcon />
-                </NavLink>)
+                </section>)
             }
+
+            <div className={`profile ${showProfile ? "profile_overlay" : ""}`}>
+              {/* <Register /> */}
+              <SignIn />
+            </div>
           </div>
 
           <div className={`navigation_section ${showMenu ? "overlay" : ""}`} id='nav_links'>
