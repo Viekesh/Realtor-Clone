@@ -4,9 +4,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { NavLink } from 'react-router-dom';
 import { NavigationLinks } from "../../Data/NavigationData";
 import { auth } from '../../FirebaseConfig';
-import Profile from '../Authentication/Profile';
-import Register from '../Authentication/Register';
-import SignIn from '../Authentication/SignIn';
+import SignIn from '../Auth/SignIn';
 
 const Nav = () => {
 
@@ -19,10 +17,14 @@ const Nav = () => {
 
 
 
-  const [showProfile, setShowProfile] = useState(false);
+  // Sign In Form
+  const [showSignInForm, setShowSignInForm] = useState(false);
 
-  const toggleProfileWindow = () => {
-    setShowProfile(!showProfile);
+  const [forgotPassButton, setForgotPassButton] = useState(false);
+
+  const toggleSignInWindow = () => {
+    setShowSignInForm(!showSignInForm);
+    setForgotPassButton(!forgotPassButton);
     document.querySelector("body").classList.toggle("body-overflow-visible");
   }
 
@@ -70,16 +72,22 @@ const Nav = () => {
                   <AccountCircleIcon />
                 </section>)
                 :
-                (<section className={`x_y_axis_center`} onClick={toggleProfileWindow}>
+                (<section className={`x_y_axis_center`} onClick={toggleSignInWindow}>
                   <AccountCircleIcon />
                 </section>)
             }
 
-            <div className={`profile ${showProfile ? "profile_overlay" : ""}`}>
-              {/* <Register /> */}
+            <div className={`sign_in_form ${showSignInForm ? "sign_in_form_overlay" : ""}`}>
               <SignIn />
             </div>
+
+            <div className={`forgot_pass_button`}>
+
+            </div>
+
           </div>
+
+
 
           <div className={`navigation_section ${showMenu ? "overlay" : ""}`} id='nav_links'>
             <div className="navigation_links">

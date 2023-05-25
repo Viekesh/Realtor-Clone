@@ -66,11 +66,11 @@
 // Navigation End
 
 
-// Profile End
 
-.profile {
-    border: 3px solid blue;
-    padding: 18px 0;
+// SignIn End
+
+.sign_in_form {
+    padding: 24px 0;
 
     position: fixed;
     top: 50%;
@@ -90,16 +90,18 @@
     border: 1px solid rgba(255, 255, 255, 0.18);
 
     width: 90vw;
-    height: auto;
+    height: fit-content;
     transform: translateY(-200%);
     transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-// Profile End
-
-.profile.profile_overlay {
+.sign_in_form.sign_in_form_overlay {
     transform: translateY(0%);
 }
+
+// SignIn End
+
+
 
 // Menu Icon Start
 
@@ -206,3 +208,5 @@
 }
 
 // Menu Icon End
+
+
