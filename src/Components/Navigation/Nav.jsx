@@ -22,10 +22,18 @@ const Nav = () => {
 
   const [forgotPassButton, setForgotPassButton] = useState(false);
 
+  const [registerButton, setRegisterButton] = useState(false);
+
   const toggleSignInWindow = () => {
+
     setShowSignInForm(!showSignInForm);
+
     setForgotPassButton(!forgotPassButton);
+
+    setRegisterButton(!registerButton);
+
     document.querySelector("body").classList.toggle("body-overflow-visible");
+
   }
 
 
@@ -81,8 +89,16 @@ const Nav = () => {
               <SignIn />
             </div>
 
-            <div className={`forgot_pass_button`}>
+            <div className={`forgot_pass_button ${forgotPassButton ? "forgot_pass_overlay" : ""}`}>
+              <NavLink to="/">
+                <button>Forgot Password</button>
+              </NavLink>
+            </div>
 
+            <div className={`register_button ${registerButton ? "register_button_overlay" : ""}`}>
+              <NavLink to="/Register">
+                <button>Register</button>
+              </NavLink>
             </div>
 
           </div>

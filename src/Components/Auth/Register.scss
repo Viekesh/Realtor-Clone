@@ -1,0 +1,36 @@
+.register {
+    border: 3px solid transparent;
+    padding-top: 120px;
+}
+
+.register form {
+    border: 3px solid transparent;
+    margin: 0 auto;
+    flex-direction: column;
+    width: 270px;
+}
+
+.register form input {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin: 9px auto;
+    padding: 0 9px;
+    width: 270px;
+    height: 45px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+
+.for_pass_visi {
+    position: relative;
+}
+
+.for_pass_visi .reg_eye_invisible {
+    position: absolute;
+    top: 24px;
+    right: 15px;
+}
+

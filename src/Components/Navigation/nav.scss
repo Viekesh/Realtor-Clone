@@ -4,6 +4,7 @@
     height: 60px;
     position: fixed;
     box-shadow: 1px 1px 3px gray;
+    background-color: snow;
 }
 
 .for_mobile {
@@ -93,6 +94,8 @@
     height: fit-content;
     transform: translateY(-200%);
     transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    z-index: 8;
 }
 
 .sign_in_form.sign_in_form_overlay {
@@ -100,6 +103,92 @@
 }
 
 // SignIn End
+
+
+
+// Forgot Password End
+
+.forgot_pass_button {
+    border: 2px solid transparent;
+
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translateX(100%);
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 7;
+}
+
+.forgot_pass_button a {
+    border: 2px solid transparent;
+    width: 270px;
+}
+
+.forgot_pass_button a button {
+    border: 1px solid red;
+    border-radius: 9px;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    color: red;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.forgot_pass_button.forgot_pass_overlay {
+    transform: translateX(-50%);
+}
+
+// Forgot Password End
+
+
+
+// Register Button Start
+
+.register_button {
+    border: 2px solid transparent;
+
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    transform: translateX(100%);
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 7;
+}
+
+.register_button a {
+    border: 2px solid transparent;
+    width: 270px;
+}
+
+.register_button a button {
+    border: 1px solid red;
+    border-radius: 9px;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    color: red;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.register_button.register_button_overlay {
+    transform: translateX(-50%);
+}
+
+// Register Button End
 
 
 
@@ -208,5 +297,3 @@
 }
 
 // Menu Icon End
-
-

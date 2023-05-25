@@ -8,7 +8,7 @@
 .sign_in form input {
     border: 1px solid gray;
     border-radius: 9px;
-    margin: 3px auto;
+    margin: 9px auto;
     padding: 0 9px;
     width: 270px;
     height: 45px;
@@ -37,14 +37,14 @@
     font-weight: 600;
 }
 
-.eye_invisible {
+.forPassVisi .eye_invisible {
     position: absolute;
-    top: 18px;
+    top: 21px;
     right: 18px;
     font-size: 18px;
 }
 
-.eye_visible {
+.forPassVisi .eye_visible {
     position: absolute;
     top: 18px;
     right: 18px;
