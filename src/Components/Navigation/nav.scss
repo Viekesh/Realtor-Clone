@@ -68,6 +68,64 @@
 
 
 
+// Profile Page Start
+
+.profile_page {
+    padding: 24px 0;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    margin-top: -33vh;
+    /* Negative half of height. */
+    margin-left: -45vw;
+    /* Negative half of width. */
+
+    background-color: rgba(255, 233, 233, 0.45);
+    box-shadow: 1px 3px 9px 0 rgba(0, 17, 255, 0.37);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    width: 90vw;
+    height: fit-content;
+    transform: translateY(-400%);
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    z-index: 8;
+}
+
+.profile_page a {
+    border: 2px solid transparent;
+    width: 270px;
+}
+
+.profile_page a button {
+    border: 1px solid transparent;
+    border-radius: 9px;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    color: red;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
+    box-shadow: 1px 3px 9px 0 rgba(0, 17, 255, 0.37);
+}
+
+.profile_page.profile_page_overlay {
+    transform: translateX(-50%);
+}
+
+
+// Profile Page End
+
+
+
 // SignIn End
 
 .sign_in_form {

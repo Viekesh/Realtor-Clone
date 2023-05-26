@@ -6,6 +6,7 @@ import { NavigationLinks } from "../../Data/NavigationData";
 import { auth } from '../../FirebaseConfig';
 import SignIn from '../Auth/SignIn';
 import OAuth from '../Auth/OAuth';
+import Profile from '../Auth/Profile';
 
 const Nav = () => {
 
@@ -18,10 +19,13 @@ const Nav = () => {
 
 
 
+  // Profile Page
+  const [profilePage, setShowProfilePage] = useState(false);
+
   // Sign In Form
   const [showSignInForm, setShowSignInForm] = useState(false);
 
-  
+
   // Forgot Password Button
   const [forgotPassButton, setForgotPassButton] = useState(false);
 
@@ -32,6 +36,13 @@ const Nav = () => {
 
   // OAuth Button
   const [oAuthButton, setOAuthButton] = useState(false);
+
+
+  const toggleProfileWindow = () => {
+    setShowProfilePage(!profilePage);
+
+    document.querySelector("body").classList.toggle("body-overflow-visible");
+  }
 
 
   const toggleSignInWindow = () => {
@@ -64,6 +75,8 @@ const Nav = () => {
 
   const userID = userName?.uid;
 
+  console.log("userID :", userID);
+
 
 
   return (
@@ -88,7 +101,7 @@ const Nav = () => {
           <div className="profile_link x_y_axis_center">
             {
               userID ?
-                (<section className="x_y_axis_center">
+                (<section className="x_y_axis_center" onClick={toggleProfileWindow}>
                   <AccountCircleIcon />
                 </section>)
                 :
@@ -96,6 +109,12 @@ const Nav = () => {
                   <AccountCircleIcon />
                 </section>)
             }
+
+            <div className={`profile_page ${profilePage ? "profile_page_overlay" : ""}`}>
+              <NavLink to="/Profile">
+                <button>Profile</button>
+              </NavLink>
+            </div>
 
             <div className={`sign_in_form ${showSignInForm ? "sign_in_form_overlay" : ""}`}>
               <SignIn />

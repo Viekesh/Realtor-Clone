@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import "./Register.scss";
 import Nav from '../Navigation/Nav';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth, database } from '../../FirebaseConfig';
+import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+// import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+
+
 
 const Register = () => {
 
@@ -36,15 +43,79 @@ const Register = () => {
         }))
     }
 
+
+
+    const userNavigateaftersignup = useNavigate();
+
+
+
+    const submitFormData = async (event) => {
+
+        event.preventDefault();
+
+        try{
+
+            if(password !== confirmPass) {
+                return alert("Password Not Matched");
+            }
+
+            if(firstname && lastname && mobileNumber && email && password && confirmPass) {
+
+                const userCredential = await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                )
+
+
+                await updateProfile(auth.currentUser, {
+                    displayName : `${firstname} ${lastname}`
+                })
+
+
+                const user = userCredential.user;
+
+
+                const formDataCopy = {...formData};
+
+
+                delete formDataCopy.password;
+
+
+                delete formDataCopy.confirmPass;
+
+
+                // formDataCopy.timeStamp = serverTimestamp();
+
+
+                await setDoc(doc(database, "realtorsCloneUsers", user.uid), {
+                    ...formDataCopy,
+                });
+
+
+                alert("Registration Successful");
+
+
+                userNavigateaftersignup("/");
+            } else {
+                return alert("All Fields Are Mandatory");
+            }
+        } catch(error) {
+            console.log(error.message);
+            alert("There is some error while signup the form");
+        }
+    }
+
     return (
         <>
             <Nav />
             <div className='register'>
-                <form action="">
+                <form onSubmit={submitFormData}>
                     <input
                         type="text"
                         id="firstname"
                         value={firstname}
+                        
                         className="input_field"
                         placeholder="Firstname"
                         onChange={handleFormData}
