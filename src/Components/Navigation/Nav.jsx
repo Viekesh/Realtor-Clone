@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { NavigationLinks } from "../../Data/NavigationData";
 import { auth } from '../../FirebaseConfig';
 import SignIn from '../Auth/SignIn';
+import OAuth from '../Auth/OAuth';
 
 const Nav = () => {
 
@@ -20,9 +21,18 @@ const Nav = () => {
   // Sign In Form
   const [showSignInForm, setShowSignInForm] = useState(false);
 
+  
+  // Forgot Password Button
   const [forgotPassButton, setForgotPassButton] = useState(false);
 
+
+  // Register Button
   const [registerButton, setRegisterButton] = useState(false);
+
+
+  // OAuth Button
+  const [oAuthButton, setOAuthButton] = useState(false);
+
 
   const toggleSignInWindow = () => {
 
@@ -31,6 +41,8 @@ const Nav = () => {
     setForgotPassButton(!forgotPassButton);
 
     setRegisterButton(!registerButton);
+
+    setOAuthButton(!oAuthButton);
 
     document.querySelector("body").classList.toggle("body-overflow-visible");
 
@@ -98,6 +110,13 @@ const Nav = () => {
             <div className={`register_button ${registerButton ? "register_button_overlay" : ""}`}>
               <NavLink to="/Register">
                 <button>Register</button>
+              </NavLink>
+            </div>
+
+            <div className={`o_auth ${oAuthButton ? "o_auth_overlay" : ""}`}>
+              <NavLink to="/OAuth">
+                {/* <button>SignIn With Google</button> */}
+                <OAuth />
               </NavLink>
             </div>
 

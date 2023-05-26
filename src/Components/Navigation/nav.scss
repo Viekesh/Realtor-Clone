@@ -3,7 +3,7 @@
     width: 100vw;
     height: 60px;
     position: fixed;
-    box-shadow: 1px 1px 3px gray;
+    box-shadow: 1px 3px 3px gray;
     background-color: snow;
 }
 
@@ -84,7 +84,7 @@
     /* Negative half of width. */
 
     background-color: rgba(255, 233, 233, 0.45);
-    box-shadow: 3px 3px 9px 0 rgba(0, 17, 255, 0.37);
+    box-shadow: 1px 3px 9px 0 rgba(0, 17, 255, 0.37);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border-radius: 10px;
@@ -130,7 +130,7 @@
 }
 
 .forgot_pass_button a button {
-    border: 1px solid red;
+    border: 1px solid transparent;
     border-radius: 9px;
     width: 100%;
     height: 45px;
@@ -139,6 +139,8 @@
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
     font-weight: 600;
+
+    box-shadow: 1px 3px 9px 0 rgba(0, 17, 255, 0.37);
 }
 
 .forgot_pass_button.forgot_pass_overlay {
@@ -158,7 +160,7 @@
     top: 65%;
     left: 50%;
     transform: translateX(100%);
-    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     
     width: 100vw;
     display: flex;
@@ -173,7 +175,7 @@
 }
 
 .register_button a button {
-    border: 1px solid red;
+    border: 1px solid transparent;
     border-radius: 9px;
     width: 100%;
     height: 45px;
@@ -182,6 +184,8 @@
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
     font-weight: 600;
+
+    box-shadow: 1px 3px 9px 0 rgba(0, 17, 255, 0.37);
 }
 
 .register_button.register_button_overlay {
@@ -189,6 +193,51 @@
 }
 
 // Register Button End
+
+
+
+// OAuth Button Start
+
+.o_auth {
+    border: 2px solid transparent;
+
+    position: fixed;
+    top: 75%;
+    left: 50%;
+    transform: translateX(100%);
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 7;
+}
+
+.o_auth a {
+    border: 2px solid transparent;
+    width: 270px;
+}
+
+.o_auth a button {
+    border: 1px solid transparent;
+    border-radius: 9px;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    color: red;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
+    box-shadow: 1px 3px 9px 0 rgba(0, 17, 255, 0.37);
+}
+
+.o_auth.o_auth_overlay {
+    transform: translateX(-50%);
+}
+
+// OAuth Button End
 
 
 
