@@ -1,0 +1,31 @@
+.user_info {
+    border: 3px solid blue;
+    padding: 90px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_info .fullname {
+    border: 3px solid black;
+    padding: 24px 0 0 0;
+    width: fit-content;
+}
+
+.fullname input {
+    border: 2px solid green;
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.profile_picture {
+    border: 3px solid black;
+}
+
+.profile_picture img {
+    width: 90px;
+    height: 90px;
+}
+
+

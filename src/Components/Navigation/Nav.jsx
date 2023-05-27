@@ -38,13 +38,6 @@ const Nav = () => {
   const [oAuthButton, setOAuthButton] = useState(false);
 
 
-  const toggleProfileWindow = () => {
-    setShowProfilePage(!profilePage);
-
-    document.querySelector("body").classList.toggle("body-overflow-visible");
-  }
-
-
   const toggleSignInWindow = () => {
 
     setShowSignInForm(!showSignInForm);
@@ -101,8 +94,10 @@ const Nav = () => {
           <div className="profile_link x_y_axis_center">
             {
               userID ?
-                (<section className="x_y_axis_center" onClick={toggleProfileWindow}>
-                  <AccountCircleIcon />
+                (<section className="x_y_axis_center">
+                  <NavLink to="/Profile">
+                    <AccountCircleIcon />
+                  </NavLink>
                 </section>)
                 :
                 (<section className={`x_y_axis_center`} onClick={toggleSignInWindow}>
@@ -110,11 +105,11 @@ const Nav = () => {
                 </section>)
             }
 
-            <div className={`profile_page ${profilePage ? "profile_page_overlay" : ""}`}>
+            {/* <div className={`profile_page ${profilePage ? "profile_page_overlay" : ""}`}>
               <NavLink to="/Profile">
                 <button>Profile</button>
               </NavLink>
-            </div>
+            </div> */}
 
             <div className={`sign_in_form ${showSignInForm ? "sign_in_form_overlay" : ""}`}>
               <SignIn />
