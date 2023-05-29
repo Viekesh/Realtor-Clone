@@ -19,6 +19,11 @@
     background-color: red;
 }
 
+.profile_link a {
+    border: 3px solid black;
+    border-radius: 50%;
+}
+
 .profile_link>section .MuiSvgIcon-root {
     font-size: 30px;
     font-weight: 900;

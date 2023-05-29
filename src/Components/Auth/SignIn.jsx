@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import "./SignIn.scss";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../FirebaseConfig';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
 
@@ -27,11 +30,40 @@ const SignIn = () => {
     }))
   }
 
-  
+
+
+  const userNavigateAfterSignIn = useNavigate();
+
+
+  const submitSignInForm = async (event) => {
+
+    event.preventDefault();
+
+    try {
+      if (email && password) {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        if (userCredential.user) {
+          alert("You Are Successfully SignIn");
+          console.log(userCredential.user);
+          userNavigateAfterSignIn("/");
+        }
+      }
+    } catch(error) {
+      console.log(error.message);
+      alert(error.message);
+    }
+  }
+
+
 
   return (
     <div className='sign_in'>
-      <form className='x_y_axis_center'>
+      <form className='x_y_axis_center' onSubmit={submitSignInForm}>
         <input
           type="email"
           id="email"
@@ -70,7 +102,7 @@ const SignIn = () => {
         <div className="form_buttons">
           <button type="submit">SignIn</button>
         </div>
-        
+
       </form>
     </div>
   )

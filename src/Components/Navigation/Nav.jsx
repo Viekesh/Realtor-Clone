@@ -6,7 +6,6 @@ import { NavigationLinks } from "../../Data/NavigationData";
 import { auth } from '../../FirebaseConfig';
 import SignIn from '../Auth/SignIn';
 import OAuth from '../Auth/OAuth';
-import Profile from '../Auth/Profile';
 
 const Nav = () => {
 
@@ -19,8 +18,6 @@ const Nav = () => {
 
 
 
-  // Profile Page
-  const [profilePage, setShowProfilePage] = useState(false);
 
   // Sign In Form
   const [showSignInForm, setShowSignInForm] = useState(false);
@@ -95,7 +92,7 @@ const Nav = () => {
             {
               userID ?
                 (<section className="x_y_axis_center">
-                  <NavLink to="/Profile">
+                  <NavLink to="/Profile" className="x_y_axis_center">
                     <AccountCircleIcon />
                   </NavLink>
                 </section>)

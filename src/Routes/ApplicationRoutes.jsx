@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LandingPage from '../LandingPage/LandingPage';
 import Register from '../Components/Auth/Register';
 import Profile from '../Components/Auth/Profile';
+import ProtectedRoutes from './ProtectedRoutes';
+import SignIn from '../Components/Auth/SignIn';
 
 const ApplicationRoutes = () => {
     return (
@@ -11,7 +13,12 @@ const ApplicationRoutes = () => {
                 <Routes>
                     <Route exact path="/" element={<LandingPage />}></Route>
                     <Route exact path="/Register" element={<Register />}></Route>
-                    <Route exact path='/Profile' element={<Profile />}></Route>
+                    <Route exact path="/SignIn" element={<SignIn />}></Route>
+
+                    {/* Protected Routes */}
+                    <Route exact path="/Profile" element={<ProtectedRoutes />}>
+                        <Route exact path='/Profile' element={<Profile />}></Route>
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </div>

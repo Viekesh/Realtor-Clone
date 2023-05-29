@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 
 
 const OAuth = () => {
+    
     return (
         <>
             <div className="oauth for_android">

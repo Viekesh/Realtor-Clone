@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { auth } from '../../FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import "./Profile.scss";
+import Nav from '../Navigation/Nav';
 
 const Profile = () => {
 
@@ -25,6 +26,7 @@ const Profile = () => {
 
   return (
     <div>
+      <Nav />
       <div className="user_info">
 
         <div className="fullname">
