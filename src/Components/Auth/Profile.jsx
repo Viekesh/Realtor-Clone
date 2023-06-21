@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { auth } from '../../FirebaseConfig';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import "./Profile.scss";
 import Nav from '../Navigation/Nav';
 
@@ -11,12 +11,9 @@ const Profile = () => {
     email: auth.currentUser.email,
   });
 
-
   const { firstname, email } = formData;
 
-
   const afterSignOut = useNavigate();
-
 
   const onLogOut = () => {
     auth.signOut();
@@ -25,34 +22,42 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <Nav />
-      <div className="user_info">
+    <>
+      <div>
+        <Nav />
+        <div className="user_info">
 
-        <div className="fullname">
-          <input
-            type="text"
-            value={firstname}
-          />
+          <div className="fullname">
+            <input
+              type="text"
+              value={firstname}
+            />
 
-          <input
-            type="email"
-            value={email}
-          />
+            <input
+              type="email"
+              value={email}
+            />
+          </div>
+
+          <div className="profile_picture">
+            <img src="" alt="" />
+          </div>
+
         </div>
 
-        <div className="profile_picture">
-          <img src="" alt="" />
+        <div className="buttons">
+          <button onClick={onLogOut}>sign out</button>
+          <button>Change Details</button>
         </div>
 
       </div>
 
-      <div className="buttons">
-        <button onClick={onLogOut}>sign out</button>
-
-        <button>Change Details</button>
+      <div className="create_list_button" >
+        <NavLink to="/CreateList">
+          Create List
+        </NavLink>
       </div>
-    </div>
+    </>
   )
 }
 

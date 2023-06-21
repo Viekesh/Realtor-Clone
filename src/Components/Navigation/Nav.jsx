@@ -125,10 +125,10 @@ const Nav = () => {
             </div>
 
             <div className={`o_auth ${oAuthButton ? "o_auth_overlay" : ""}`}>
-              <NavLink to="/OAuth">
+              {/* <NavLink to="/OAuth"> */}
                 {/* <button>SignIn With Google</button> */}
                 <OAuth />
-              </NavLink>
+              {/* </NavLink> */}
             </div>
 
           </div>

@@ -26,7 +26,6 @@ export const CheckAuthStatus = () => {
 
 
 
-
 // source : https://stackoverflow.com/questions/71090914/uncaught-typeerror-object-is-not-iterable-cannot-read-property-symbolsymbol-i
 // one problem can be occured in this component and now it is solved by using above link
 

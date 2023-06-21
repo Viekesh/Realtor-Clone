@@ -131,7 +131,7 @@
 
 
 
-// SignIn End
+// SignIn Start
 
 .sign_in_form {
     padding: 24px 0;
@@ -277,15 +277,15 @@
     z-index: 7;
 }
 
-.o_auth a {
+// .o_auth a {
+//     border: 2px solid transparent;
+//     width: 270px;
+// }
+
+.o_auth button {
     border: 2px solid transparent;
     width: 270px;
-}
-
-.o_auth a button {
-    border: 1px solid transparent;
     border-radius: 9px;
-    width: 100%;
     height: 45px;
     background: transparent;
     color: red;
