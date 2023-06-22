@@ -1,4 +1,86 @@
 .create_list_page {
-    border: 2px solid red;
+    border: 2px solid transparent;
     padding: 10vh auto;
 }
+
+.create_list_page h1 {
+    border: 2px solid transparent;
+    margin: 10vh 0 3.3vh 0;
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+    color: blue;
+}
+
+.listing_form {
+    border: 2px solid transparent;
+}
+
+.listing_form .properties_form {
+    border: 2px solid transparent;
+}
+
+.listing_form .properties_form .list_elements {
+    border: 2px solid transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listing_form .properties_form .list_elements .element_buttons {
+    border: 3px solid transparent;
+    margin: 9px auto;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.element_buttons button {
+    border: 3px solid snow;
+    border-radius: 9px;
+    width: 90px;
+    height: 36px;
+    background-color: gray;
+    color: snow;
+    box-shadow: 1px 1px 3px gray;
+}
+
+.list_elements>input {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin: 9px auto;
+    padding: 0 9px;
+    width: 300px;
+    height: 45px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.list_elements>textarea {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin: 9px auto;
+    padding: 15px 9px;
+    width: 300px;
+    height: 90px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.element_buttons>.sell_button {
+    border: 3px solid snow;
+    background-color: gray;
+}
+
+.element_buttons>.sell_background {
+    border: 3px solid gray;
+    background-color: snow;
+    color: gray;
+}
+
+
+
+//.

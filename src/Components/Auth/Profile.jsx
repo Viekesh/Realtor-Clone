@@ -31,6 +31,7 @@ const Profile = () => {
             <input
               type="text"
               value={firstname}
+              className="fullname_field"
             />
 
             <input

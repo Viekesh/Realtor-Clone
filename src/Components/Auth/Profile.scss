@@ -14,8 +14,11 @@
 .fullname input {
     border: 2px solid green;
     font-size: 15px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Source Code Pro', monospace;
     font-weight: 600;
+}
+
+.fullname_field {
     text-transform: capitalize;
 }
 
