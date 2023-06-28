@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import Nav from '../Components/Navigation/Nav';
 import "./CreateList.scss";
+import { auth, database, storage } from '../FirebaseConfig';
+import { v4 as uuidv4 } from "uuid";
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import Spinner from '../Components/Spinner/Spinner';
 
 const CreateList = () => {
 
@@ -57,8 +62,20 @@ const CreateList = () => {
             boolean = false;
         }
 
-        // this is for booleans/text/numbers. if we don't have the images/files and the boolean values, then with the help of "useState" function "setFormData" we going to return an object
 
+
+        // this is for files, if input is files so in this case set form data
+        if (event.target.files) {
+
+            // first here we get prvious state, so in case that we have the files, we want to set the images to
+            // either target that files
+            setFormData((prevState) => ({
+                ...prevState,
+                [event.target.id]: boolean ?? event.target.value,
+            }));
+        }
+
+        // this is for booleans/text/numbers. if we don't have the images/files and the boolean values, then with the help of "useState" function "setFormData" we going to return an object
         if (!event.target.files) {
             setFormData((prevState) => ({
                 ...prevState,
@@ -83,11 +100,124 @@ const CreateList = () => {
 
         // the discounted price is always less than regular price if this is not happen then we can send error to the user, so for this we make a condition sometimes in the form the number is considered as a string, so here we use "+" sign to prevent that problem by converting it string into number.
 
-        if(+discountPrice >= +regularPrice) {
+        if (+discountPrice >= +regularPrice) {
             setLoading(false);
             alert("Discount Price Needs To Be Less Than Regular Price");
             return;
         }
+
+        if (images.length > 6) {
+            setLoading(false);
+            alert("Only 6 Images Are Allowed");
+            return;
+        }
+
+        const storeImage = async (image) => {
+
+            return new Promise((resolve, reject) => {
+
+                // In order to keep image completly unique, for ex the person upload the same image two times then we add some random numbers and letters, in order to do that we use a package called "uuid".
+
+                const filename = `${auth.currentUser.uid} - ${image.name} - ${uuidv4()}`
+
+                const storageRef = ref(storage, filename);
+
+                const uploadTask = uploadBytesResumable(storageRef, image);
+
+                uploadTask.on("state_changed", (snapshot) => {
+
+                    // Observe state change events such as progress, pause, and resume
+                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+                    console.log("Upload is " + progress + "% done.");
+
+                    setProgress(progress);
+
+                    switch (snapshot.state) {
+                        case "paused":
+                            console.log("Upload Is Paused");
+                            break;
+
+                        case "running":
+                            console.log("Upload Is Running");
+                            break;
+
+                        case "canceled":
+                            console.log("Upload Is Canceled");
+                            break;
+
+                        default:
+                            break;
+                    }
+                }, (error) => {
+                    // Handle successful uploads
+                    reject(error);
+                }, () => {
+
+                    // Handle successful uploads on complete
+                    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+                        resolve(downloadUrl);
+                        console.log("Images uploaded successfully. Link : ", downloadUrl);
+                    });
+                });
+
+
+            })
+        }
+
+        // console.log(storeImage);
+
+        const imgUrls = await Promise.all(
+            [...images].map((image) => storeImage(image))).catch((error) => {
+                setLoading(false);
+                alert("Images Not Uploaded");
+                console.log(error.message);
+                return;
+            });
+
+        const formDataCopy = {
+
+            ...formData,
+            imgUrls,
+            // geolocation,
+            timestamp: serverTimestamp(),
+            useRef: auth.currentUser.uid,
+
+        }
+
+        delete formDataCopy.images;
+
+        // if offer is not available
+        !formDataCopy.offer && delete formDataCopy.discountPrice;
+
+        // delete formDataCopy.logitude;
+        // delete formDataCopy.latitude;
+
+        try {
+
+            const docRef = await addDoc(collection(database, "RealtorCloneListing"), {
+                ...formDataCopy,
+            });
+            setLoading(false);
+            alert("Form Successfully Submitted");
+
+        } catch (error) {
+
+            console.log(error.message);
+
+        }
+
+        // we just navigate the user to this url and the url is dynamic because we want the url to be based on the listing id
+        // we check here there is a "rent" or "sale" 
+    }
+
+
+
+    if (loading) {
+        return <Spinner />
     }
 
 
@@ -100,7 +230,7 @@ const CreateList = () => {
                     <h1>Enter Details</h1>
                 </div>
 
-                <form className="create_list_form">
+                <form className="create_list_form" onSubmit={submitCreateListing}>
 
                     <div className="list_elements">
                         <div className="form_buttons">
@@ -134,7 +264,7 @@ const CreateList = () => {
                             placeholder="Enter Name"
                             id="name"
                             value={name}
-                            onClick={afterClickOnCreateListInput}
+                            onChange={afterClickOnCreateListInput}
                             minLength="9"
                             maxLength="90"
                             required
@@ -304,26 +434,22 @@ const CreateList = () => {
 
 
 
-                    {
-                        type === "rent" && (
-                            <div className="list_elements">
-                                <input
-                                    type="number"
-                                    id="regularPrice"
-                                    placeholder="Regular Price"
-                                    value={regularPrice}
-                                    onChange={afterClickOnCreateListInput}
-                                    minLength="60"
-                                    maxLength="9000000"
-                                    className="regular_price"
-                                />
-                                <div>
-                                    <p>$ / Months</p>
-                                </div>
-                            </div>
-                        )
-                    }
 
+                    <div className="list_elements">
+                        <input
+                            type="number"
+                            id="regularPrice"
+                            placeholder="Regular Price"
+                            value={regularPrice}
+                            onChange={afterClickOnCreateListInput}
+                            minLength="60"
+                            maxLength="9000000"
+                            className="regular_price"
+                        />
+                        <div>
+                            <p>$ / Months</p>
+                        </div>
+                    </div>
 
 
                     <div className="list_elements">
