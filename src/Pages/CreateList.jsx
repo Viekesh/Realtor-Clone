@@ -71,7 +71,7 @@ const CreateList = () => {
             // either target that files
             setFormData((prevState) => ({
                 ...prevState,
-                [event.target.id]: boolean ?? event.target.value,
+                images: event.target.files,
             }));
         }
 
@@ -89,6 +89,8 @@ const CreateList = () => {
     const [loading, setLoading] = useState(false);
 
     const [progress, setProgress] = useState(null);
+
+
 
     const submitCreateListing = async (event) => {
 
@@ -108,7 +110,7 @@ const CreateList = () => {
 
         if (images.length > 6) {
             setLoading(false);
-            alert("Only 6 Images Are Allowed");
+            alert("Maximum 6 Images Are Allowed");
             return;
         }
 
