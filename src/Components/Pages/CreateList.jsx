@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import Nav from '../Components/Navigation/Nav';
+
 import "./CreateList.scss";
-import { auth, database, storage } from '../FirebaseConfig';
+import { auth, database, storage } from '../../FirebaseConfig';
 import { v4 as uuidv4 } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import Spinner from '../Components/Spinner/Spinner';
+import Nav from '../Navigation/Nav';
+import Spinner from '../Spinner/Spinner';
 
 const CreateList = () => {
 

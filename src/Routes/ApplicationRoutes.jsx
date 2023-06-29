@@ -5,7 +5,7 @@ import Register from '../Components/Auth/Register';
 import Profile from '../Components/Auth/Profile';
 import ProtectedRoutes from './ProtectedRoutes';
 import SignIn from '../Components/Auth/SignIn';
-import CreateList from '../Pages/CreateList';
+import CreateList from '../Components/Pages/CreateList';
 
 
 
