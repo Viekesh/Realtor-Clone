@@ -41,7 +41,9 @@ const Profile = () => {
 
       const listingRef = collection(database, "RealtorCloneListing");
 
-      const q = query(listingRef, where("useRef", "==", auth.currentUser.uid),
+      const q = query(
+        listingRef,
+        where("useRef", "==", auth.currentUser.uid),
         orderBy("timestampt", "desc")
       );
 
