@@ -7,8 +7,11 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import Nav from '../Navigation/Nav';
 import Spinner from '../Spinner/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 const CreateList = () => {
+
+    const navigate = useNavigate();
 
     // we create this hook to get initial state of the form, after user fill the data in this form then we update that data and send them by using the "useState" function (setFormData);
 
@@ -207,14 +210,16 @@ const CreateList = () => {
             setLoading(false);
             alert("Form Successfully Submitted");
 
+            // we just navigate the user to this url and the url is dynamic because we want the url to be based on the listing id
+            // we check here there is the "rent" or the "sale" so we get this
+            
+            navigate(`/category/${formDataCopy.type}/${docRef.id}/`)
+
         } catch (error) {
 
             console.log(error.message);
 
         }
-
-        // we just navigate the user to this url and the url is dynamic because we want the url to be based on the listing id
-        // we check here there is a "rent" or "sale" 
     }
 
 
