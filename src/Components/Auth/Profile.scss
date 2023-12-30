@@ -24,11 +24,40 @@
 
 .profile_picture {
     border: 3px solid black;
+    border-radius: 3em;
 }
 
 .profile_picture img {
+    border-radius: 3em;
     width: 90px;
     height: 90px;
+}
+
+.buttons {
+    // border: 2px solid yellowgreen;
+    margin: 0 auto;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buttons button {
+    border: 2px solid snow;
+    border-radius: .6em;
+    width: 9.6em;
+    height: 2.3em;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    color: snow;
+    background-color: blue;
+    box-shadow: 1px 1px 9px 1px rgb(151, 151, 255);
+    transition: 0.3s;
+}
+
+.buttons button:active {
+    transform: scale(0.8);
 }
 
 
@@ -36,18 +65,34 @@
 // Create List Button
 
 .create_list_button {
-    border: 2px solid transparent;
+    border: 2px solid red;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .create_list_button a {
-    border: 2px solid blue;
+    border: 2px solid snow;
+    width: 9.6em;
+    height: 2.3em;
     border-radius: 9px;
     margin: 12px auto;
     padding: 9px;
     width: 300px;
-    text-align: center;
-    color: blue;
+    height: 45px;
+    // text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    color: snow;
+    background-color: blue;
+    box-shadow: 1px 1px 9px 1px rgb(151, 151, 255);
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create_list_button a:active {
+    transform: scale(0.9);
 }

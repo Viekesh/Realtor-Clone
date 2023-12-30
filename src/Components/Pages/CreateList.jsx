@@ -212,7 +212,7 @@ const CreateList = () => {
 
             // we just navigate the user to this url and the url is dynamic because we want the url to be based on the listing id
             // we check here there is the "rent" or the "sale" so we get this
-            
+
             navigate(`/category/${formDataCopy.type}/${docRef.id}/`)
 
         } catch (error) {

@@ -1,115 +1,150 @@
-import React, { useEffect, useState } from 'react'
-import { auth, database } from '../../FirebaseConfig';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import "./Profile.scss";
 import Nav from '../Navigation/Nav';
-import { collection, getDoc, orderBy, query, where } from 'firebase/firestore';
+
+
+// Imports Firebase configuration for authentication and database access.
+import { auth, database } from '../../FirebaseConfig';
+
+// Imports navigation components and a hook from React Router for routing and navigation between pages.
+import { NavLink, useNavigate } from 'react-router-dom';
+
+// Imports Firestore-related functions for interacting with the Firebase Firestore database.
+import { collection, doc, getDocs, orderBy, query, where } from 'firebase/firestore';
+
+
+
 
 
 
 const Profile = () => {
 
-  // here we can use useState hook to fetch data from firestore database
-  const [listings, setListings] = useState(null);
+    // Uses the useState hook to create a state variable formData to store user's profile information (first name 
+    // and email). Initializes formData with the current user's details from Firebase Authentication.
+    const [formData, setFormData] = useState({
+        firstname: auth.currentUser.displayName,
+        email: auth.currentUser.email,
+    });
 
 
-  const [loading, setLoading] = useState(true);
+    // Destructures firstname and email from formData for convenient access.
+    const { firstname, email } = formData;
 
 
-  const [formData, setFormData] = useState({
-    firstname: auth.currentUser.displayName,
-    email: auth.currentUser.email,
-  });
+    // Retrieves a navigation function for redirecting after logout.
+    const afterSignOut = useNavigate();
 
+    // Defines a function for handling logout
+    const onLogOut = () => {
 
-  const { firstname, email } = formData;
-
-
-  const afterSignOut = useNavigate();
-
-
-  const onLogOut = () => {
-    auth.signOut();
-    afterSignOut("/");
-    alert("You Are Successfully Logout");
-  }
-
-
-
-  useEffect(() => {
-    async function fetchUserListings() {
-
-      const listingRef = collection(database, "RealtorCloneListing");
-
-      const q = query(
-        listingRef,
-        where("useRef", "==", auth.currentUser.uid),
-        orderBy("timestampt", "desc")
-      );
-
-      const querySnap = await getDoc(q);
-
-      let listing = [];
-
-      querySnap.forEach((doc) => {
-        return listing.push({
-          id: doc.id,
-          data: doc.data(),
-        });
-      });
-
-      setListings(listings);
-
-      setLoading(false);
-
+        // Signs the user out of Firebase Authentication.
+        auth.signOut();
+        afterSignOut("/");
+        alert("You Are Successfully Logout");
     }
 
-    fetchUserListings();
-  }, [listings]);
+
+    // here we use useState for storing fetched listings.
+    const [listings, setListings] = useState(null);
+
+    // Tracks loading state for data fetching.
+    const [loading, setLoading] = useState(true);
 
 
 
-  return (
-    <>
-      <div>
-        <Nav />
-        <div className="user_info">
+    // Uses the useEffect hook to fetch listings when the component mounts or the user ID changes.
+    useEffect(() => {
 
-          <div className="fullname">
-            <input
-              type="text"
-              value={firstname}
-              className="fullname_field"
-            />
 
-            <input
-              type="email"
-              value={email}
-            />
-          </div>
+        // Defines an asynchronous function to fetch listings from Firestore: Constructs a query for listings 
+        // where the useRef field matches the current user's ID, ordered by timestamp. Fetches documents using 
+        // getDocs. Processes fetched documents, storing their IDs and data in an array. Updates the listings 
+        // state with the fetched data. Sets loading to false to indicate data fetching is complete.
+        async function fetchUserListings() {
 
-          <div className="profile_picture">
-            <img src="" alt="" />
-          </div>
+            const listingRef = collection(database, "RealtorCloneListing");
 
-        </div>
+            // const listingDoc = doc(listingRef, auth.currentUser.uid).ref;
 
-        <div className="buttons">
-          <button onClick={onLogOut}>sign out</button>
-          <button>Change Details</button>
-        </div>
+            // setListings(listingDoc);
 
-      </div>
+            const qr = query(
+                listingRef,
+                where("useRef", "==", auth.currentUser.uid),
+                orderBy("timestamp", "desc")
+            );
 
-      <div className="create_list_button" >
-        <NavLink to="/CreateList">
-          Create List
-        </NavLink>
-      </div>
-    </>
-  )
+            const querySnap = await getDocs(qr);
+
+            let listing = [];
+
+            querySnap.forEach((doc) => {
+                return listing.push({
+                    id: doc.id,
+                    data: doc.data(),
+                });
+            });
+
+            setListings(listing);
+
+            setLoading(false);
+
+        }
+
+        // Calls the fetchUserListings function to initiate data fetching.
+        fetchUserListings();
+    }, [auth.currentUser.uid]);
+
+
+
+    return (
+        <>
+            <div>
+                <Nav />
+
+                <div className="user_info">
+                    <div className="fullname">
+                        <input
+                            type="text"
+                            defaultValue={firstname}
+                            className="fullname_field"
+                        />
+
+                        <input
+                            type="email"
+                            defaultValue={email}
+                        />
+                    </div>
+
+                    <div className="profile_picture">
+                        <img src="" alt="" />
+                    </div>
+                </div>
+
+                <div className="buttons">
+                    <button onClick={onLogOut}>sign out</button>
+                    <button>Edit Details</button>
+                </div>
+
+            </div>
+
+            <div className="create_list_button" >
+                <NavLink to="/CreateList">
+                    Create List
+                </NavLink>
+            </div>
+
+            <div>
+                {
+                    !loading && listings.length > 0 && (
+                        <>
+                            <h2>My Listing</h2>
+                        </>
+                    )
+                }
+            </div>
+        </>
+    )
 }
 
 export default Profile;
-
-

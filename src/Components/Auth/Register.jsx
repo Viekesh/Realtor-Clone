@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import "./Register.scss";
 import Nav from '../Navigation/Nav';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+
+
+
+// Imports functions for creating users and updating profiles in Firebase Authentication.
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+
+// Imports functions for interacting with Firestore, a database.
 import { auth, database } from '../../FirebaseConfig';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
@@ -33,6 +39,7 @@ const Register = () => {
 
 
 
+    // Updates form data based on user input.
     const handleFormData = (event) => {
         console.log(event.target.value);
 
@@ -49,17 +56,22 @@ const Register = () => {
 
 
 
+    // Handles form submission, including Password validation 
+    // Firebase Authentication
+    // User profile creation
+    // Firestore data storage
+    // Redirection upon success
     const submitFormData = async (event) => {
 
         event.preventDefault();
 
-        try{
+        try {
 
-            if(password !== confirmPass) {
+            if (password !== confirmPass) {
                 return alert("Password Not Matched");
             }
 
-            if(firstname && lastname && mobileNumber && email && password && confirmPass) {
+            if (firstname && lastname && mobileNumber && email && password && confirmPass) {
 
                 const userCredential = await createUserWithEmailAndPassword(
                     auth,
@@ -69,14 +81,14 @@ const Register = () => {
 
 
                 await updateProfile(auth.currentUser, {
-                    displayName : `${firstname} ${lastname}`
+                    displayName: `${firstname} ${lastname}`
                 })
 
 
                 const user = userCredential.user;
 
 
-                const formDataCopy = {...formData};
+                const formDataCopy = { ...formData };
 
 
                 delete formDataCopy.password;
@@ -100,7 +112,7 @@ const Register = () => {
             } else {
                 return alert("All Fields Are Mandatory");
             }
-        } catch(error) {
+        } catch (error) {
             console.log(error.message);
             alert("There is some error while signup the form");
         }
@@ -115,7 +127,7 @@ const Register = () => {
                         type="text"
                         id="firstname"
                         value={firstname}
-                        
+
                         className="input_field"
                         placeholder="Firstname"
                         onChange={handleFormData}

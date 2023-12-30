@@ -1,14 +1,17 @@
 import React from "react";
+import "./LandingPage.css";
 import Nav from "../Components/Navigation/Nav";
 
 const LandingPage = () => {
   return (
-    <div>
+    <section className="landing_page">
       <Nav />
-    </div>
+    </section>
   );
 };
 
 export default LandingPage;
 
 
+
+// .

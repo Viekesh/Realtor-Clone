@@ -126,8 +126,8 @@ const Nav = () => {
 
             <div className={`o_auth ${oAuthButton ? "o_auth_overlay" : ""}`}>
               {/* <NavLink to="/OAuth"> */}
-                {/* <button>SignIn With Google</button> */}
-                <OAuth />
+              {/* <button>SignIn With Google</button> */}
+              <OAuth />
               {/* </NavLink> */}
             </div>
 
