@@ -39,6 +39,7 @@ const Profile = () => {
   useEffect(() => {
     async function fetchUserListings() {
 
+      // first we need to create a reference
       const listingRef = collection(database, "RealtorCloneListing");
 
       const listingDoc = doc(listingRef, auth.currentUser.uid);

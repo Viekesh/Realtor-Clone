@@ -11,6 +11,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 // Imports Firestore-related functions for interacting with the Firebase Firestore database.
 import { collection, doc, getDocs, orderBy, query, where } from 'firebase/firestore';
+import { ListingAssets } from '../ListesdAssets/ListedAssets';
 
 
 
@@ -62,15 +63,22 @@ const Profile = () => {
         // state with the fetched data. Sets loading to false to indicate data fetching is complete.
         async function fetchUserListings() {
 
+            // first we need to create a reference, that's why we created here "listingRef"
             const listingRef = collection(database, "RealtorCloneListing");
 
             // const listingDoc = doc(listingRef, auth.currentUser.uid).ref;
 
             // setListings(listingDoc);
 
+            // here we need to create a query, so here we can use query method from firestore...
+            // query is used to get few things, first is reference, here our reference is "listingRef" variable
+            // second is from where we can get reference so we use "where"
             const qr = query(
                 listingRef,
                 where("useRef", "==", auth.currentUser.uid),
+
+                // here we can fetch listing according to time at descending order, that means new one can come
+                // first
                 orderBy("timestamp", "desc")
             );
 
@@ -139,6 +147,22 @@ const Profile = () => {
                     !loading && listings.length > 0 && (
                         <>
                             <h2>My Listing</h2>
+
+                            <ul>
+                                {
+                                    listings.map((listiiing) => {
+                                        return (
+                                            <>
+                                                <ListingAssets
+                                                    key={listiiing.id}
+                                                    id={listiiing.id}
+                                                    listItems={listiiing.data}
+                                                />
+                                            </>
+                                        )
+                                    })
+                                }
+                            </ul>
                         </>
                     )
                 }
