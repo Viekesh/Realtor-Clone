@@ -1,43 +1,40 @@
 .top_navigation {
     border: 3px solid blue;
     width: 100vw;
-    height: 100vh;
+    height: 9vh;
     position: relative;
+    z-index: 999 !important;
 }
 
 .nav_button {
     border: 3px solid green;
 }
 
+/* Initially hidden off-screen */
 .menu_links {
-    border: 3px solid black;
     width: 50%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    background-color: #f0f0f0;
+    background-color: red;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transform: translateX(-100%);
-    /* Initially hidden off-screen */
     transition: transform 0.3s ease-in-out;
-}
-
-.menu_links.open {
-    transform: translateX(0);
-    /* Slide in when open */
+    z-index: 9 !important;
 }
 
 .nav_overlay {
+    border: 3px solid black;
     position: absolute;
     top: 0;
     left: 50%;
     width: 50%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
+    /* background-color: rgba(0, 0, 0, 0.3); */
     z-index: 1;
     /* Ensure it's above the menu */
 }

@@ -1,0 +1,16 @@
+.tab_navigation {
+    border: 3px solid blue;
+    height: 45vh;
+}
+
+.tab_wrapper {
+    border: 3px solid green;
+    width: 70%;
+    justify-content: space-between;
+}
+
+.tab_container {
+    border: 3px solid black;
+    padding: 6px;
+    width: 63px;
+}
