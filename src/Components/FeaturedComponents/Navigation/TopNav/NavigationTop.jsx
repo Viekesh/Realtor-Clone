@@ -6,7 +6,7 @@ import "./NavigationTop.css";
 
 const NavigationTop = () => {
 
-    const [isMenuOpen, setIsMenuOpen] = useState(true);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleNavElements = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -22,21 +22,21 @@ const NavigationTop = () => {
         <nav className="nav_top">
 
             <div className="nav_elements y_axis_center">
-                <NavLink to="/" className="logo">logo</NavLink>
-
                 <button
                     className="nav_button"
                     onClick={handleNavElements}
                 >
-                    Toggle
+                    menu
                 </button>
+
+                <NavLink to="/" className="logo">logo</NavLink>
             </div>
 
             {
                 isMenuOpen &&
                 (
                     <>
-                        <div className="nav_links">
+                        <div className={`nav_links ${isMenuOpen === true ? "open" : ""}`}>
                             <div className="nav_options">
                                 <ul>
                                     <li>one</li>

@@ -1,16 +1,24 @@
 .tab_navigation {
-    border: 3px solid blue;
+    border: 1px solid transparent;
     height: 45vh;
+    background-color: black;
 }
 
 .tab_wrapper {
-    border: 3px solid green;
+    border: 1px solid transparent;
     width: 70%;
     justify-content: space-between;
 }
 
 .tab_container {
-    border: 3px solid black;
+    border: 1px solid green;
+    border-radius: 6px;
     padding: 6px;
     width: 63px;
+    color: snow;
+    font-weight: 100;
+}
+
+.tab_container:hover {
+    border-bottom: 3px solid green;
 }

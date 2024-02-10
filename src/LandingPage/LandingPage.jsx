@@ -33,9 +33,9 @@ const LandingPage = () => {
             </header>
 
             <main>
-                {/* <TabNav activeTab={activeTab} setActiveTab={setActiveTab} />
+                <TabNav activeTab={activeTab} setActiveTab={setActiveTab} />
 
-                {getTabScreen(activeTab)} */}
+                {getTabScreen(activeTab)}
             </main>
         </>
     )
