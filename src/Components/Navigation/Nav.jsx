@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './nav.scss';
+// import './nav.scss';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { NavLink } from 'react-router-dom';
 import { NavigationLinks } from "../../Data/NavigationData";

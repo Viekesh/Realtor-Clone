@@ -4,6 +4,7 @@ import Sell from '../Components/Pages/Sell/Sell';
 import Rent from '../Components/Pages/Rent/Rent';
 import TabNav from '../Components/FeaturedComponents/Navigation/TabNavigation/TabNav';
 import NavigationTop from '../Components/FeaturedComponents/Navigation/TopNav/NavigationTop';
+import "./LandingPage.css";
 
 
 
@@ -35,7 +36,9 @@ const LandingPage = () => {
             <main>
                 <TabNav activeTab={activeTab} setActiveTab={setActiveTab} />
 
-                {getTabScreen(activeTab)}
+                <div className="tab_screen">
+                    {getTabScreen(activeTab)}
+                </div>
             </main>
         </>
     )

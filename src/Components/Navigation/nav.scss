@@ -2,7 +2,7 @@
 .navigation {
     width: 100vw;
     height: 60px;
-    position: fixed;
+    // position: fixed;
     box-shadow: 1px 3px 3px gray;
     // background-color: snow;
 }
@@ -16,6 +16,7 @@
     border: 3px solid red;
     border-radius: 50%;
     width: fit-content;
+    width: -moz-fit-content;
     background-color: red;
 }
 
@@ -47,11 +48,11 @@
     transform: translateX(0px);
 }
 
-.navigation_links {
-    margin: 60px auto;
-    height: 360px;
-    padding: 0 12px;
-}
+// .navigation_links {
+//     margin: 60px auto;
+//     height: 360px;
+//     padding: 0 12px;
+// }
 
 .navigation_links a {
     border: 3px solid snow;

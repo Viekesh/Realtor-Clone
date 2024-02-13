@@ -1,62 +1,88 @@
-.nav_top {
+.navigation_top {
     border: 1px solid transparent;
     height: 9vh;
-    background-color: darkblue;
     position: relative;
-    z-index: 999 !important;
 }
 
-.nav_elements {
+.navigation_top>.navigation_elements {
+    border: 1px solid transparent;
+    width: 100vw;
+    height: 9vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999 !important;
+
+    background-color: darkblue;
+}
+
+.navigation_top>.navigation_elements>.logo_menu {
     border: 1px solid transparent;
     margin: 0 auto;
-    width: 90%;
+    width: 80%;
     height: 100%;
     justify-content: space-between;
 }
 
-.nav_elements .logo {
-    color: snow;
+.navigation_top>.navigation_elements>.logo_menu>.menu_button {
+    border: 2px solid transparent;
+    width: 70px;
 }
 
-.nav_button {
+.navigation_top>.navigation_elements>.logo_menu>.menu_button>button {
     border-radius: 6px;
-    padding: 0.6vh 1vh;
+    outline: none;
+    padding: 0.3vh 0.6vh 0.3vh 1.2vh;
+    width: 100%;
+    height: 9%;
+    background-color: black;
+    color: snow;
     text-transform: uppercase;
-    font-weight: bold;
+
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+    font-size: 80%;
     letter-spacing: 3px;
 }
 
-.nav_links {
-    border: 1px solid transparent;
-    width: 100vw;
+.navigation_top>.navigation_elements>.logo_menu>.menu_button>button:active {
+    background-color: gray;
+}
+
+.navigation_links {
+    border: 0px solid transparent;
+    width: 0vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    transform: translateX(-100vw);
-    transition: 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 998 !important;
+
+    transform: translateX(-100%);
+    transition: 0.1s;
+    /* transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); */
 }
 
-.nav_links.open {
-    transform: translateX(0);
+.navigation_links.navigation_overlay {
+    width: 100vw;
+    transform: translateX(0%);
 }
 
-.nav_options {
-    border: 1px solid transparent;
-    width: 50vw;
+.navigation_links>.nav_link {
+    border: 3px solid transparent;
+    width: 50%;
     height: 100%;
     background-color: black;
-    color: snow;
 }
 
-.nav_overlay {
+.navigation_links .box_overlay {
     border: 3px solid transparent;
-    width: 50vw;
+    width: 50%;
+    height: 100%;
 
     background: rgba(255, 255, 255, 0.6);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.18);
 }

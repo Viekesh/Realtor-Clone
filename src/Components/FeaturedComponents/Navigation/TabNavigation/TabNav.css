@@ -2,6 +2,7 @@
     border: 1px solid transparent;
     height: 45vh;
     background-color: black;
+    flex-direction: column;
 }
 
 .tab_wrapper {
@@ -12,13 +13,15 @@
 
 .tab_container {
     border: 1px solid green;
+    border-bottom: 3px solid green;
     border-radius: 6px;
     padding: 6px;
     width: 63px;
     color: snow;
     font-weight: 100;
+    transition: 0.3s;
 }
 
-.tab_container:hover {
-    border-bottom: 3px solid green;
+.tab_container:active {
+    border-bottom: 1px solid green;
 }

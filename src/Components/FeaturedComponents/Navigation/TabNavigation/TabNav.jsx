@@ -54,6 +54,11 @@ const TabNav = ({ activeTab, setActiveTab }) => {
                         })
                     }
                 </div>
+
+                {/* <div className="prop_search">
+                    <input type="text" />
+                </div> */}
+
             </div>
         </>
     )
