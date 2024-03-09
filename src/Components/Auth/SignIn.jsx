@@ -53,7 +53,7 @@ const SignIn = () => {
           userNavigateAfterSignIn("/");
         }
       }
-    } catch(error) {
+    } catch (error) {
       console.log(error.message);
       alert(error.message);
     }

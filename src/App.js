@@ -1,11 +1,11 @@
 import React from 'react';
 import "./App.css";
-import ApplicationRoutes from './Routes/ApplicationRoutes';
+import ReactRouter from './ReactRouterDOM/ReactRouter';
 
 const App = () => {
   return (
     <>
-      <ApplicationRoutes />
+      <ReactRouter />
     </>
   )
 }

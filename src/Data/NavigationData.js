@@ -1,17 +1,17 @@
 export const NavigationLinks = [
     {
         id: 0,
-        link: "/Buy",
-        name: "BUY"
+        navlink: "/Authenticate",
+        name: "authenticate"
     },
     {
         id: 1,
-        link: "/Rent",
-        name: "RENT"
+        link: "/Buy",
+        name: "buy"
     },
     {
         id: 2,
-        link: "/Sell",
-        name: "SELL"
+        link: "/Rent",
+        name: "rent"
     },
 ]

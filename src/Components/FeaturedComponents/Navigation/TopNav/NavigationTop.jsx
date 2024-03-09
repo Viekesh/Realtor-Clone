@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavigationTop.css";
+import { NavigationLinks } from "../../../../Data/NavigationData";
 
 
 
@@ -26,7 +27,9 @@ const NavigationTop = () => {
                         <div className="menu_button x_y_axis_center">
                             <button
                                 onClick={handleNavElements}
-                            >Menu</button>
+                            >
+                                menu
+                            </button>
                         </div>
 
                         <div className="logo y_axis_center">
@@ -37,7 +40,21 @@ const NavigationTop = () => {
                 </section>
 
                 <section className={`navigation_links x_y_axis_center ${isMenuOpen === true ? "navigation_overlay" : ""}`}>
-                    <div className="nav_link"></div>
+                    <div className="nav_link">
+                        <div className="links_conatainer">
+                            {
+                                NavigationLinks.map((data) => {
+                                    return (
+                                        <>
+                                            <div className="link_options">
+                                                <NavLink to={data.navlink} key={data.id}>{data.name}</NavLink>
+                                            </div>
+                                        </>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
                     <div className="box_overlay" onClick={handleOverlayClick}></div>
                 </section>
             </nav>

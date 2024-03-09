@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Buy from '../Components/Pages/Buy/Buy';
-import Sell from '../Components/Pages/Sell/Sell';
-import Rent from '../Components/Pages/Rent/Rent';
-import TabNav from '../Components/FeaturedComponents/Navigation/TabNavigation/TabNav';
-import NavigationTop from '../Components/FeaturedComponents/Navigation/TopNav/NavigationTop';
 import "./LandingPage.css";
+import NavigationTop from '../../FeaturedComponents/Navigation/TopNav/NavigationTop';
+import TabNav from '../../FeaturedComponents/Navigation/TabNavigation/TabNav';
+import Buy from '../Buy/Buy';
+import Sell from '../Sell/Sell';
+import Rent from '../Rent/Rent';
 
 
 
