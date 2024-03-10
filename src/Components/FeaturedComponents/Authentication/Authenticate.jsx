@@ -1,4 +1,4 @@
-
+import "./Authenticate.scss";
 import { useState } from "react";
 import MainHead from "../../CommonModules/Headings/MainHead";
 import NavigationTop from "../Navigation/TopNav/NavigationTop";
@@ -61,7 +61,10 @@ const Authenticate = () => {
             console.log(error.message);
 
         }
-    }
+    };
+
+
+
     return (
         <>
             <section className="authenticate">
@@ -70,26 +73,26 @@ const Authenticate = () => {
 
                 <div className="sign_in">
 
-                    <form >
-                        <div className="form_elements">
+                    <form>
+                        <div className="form_elements y_axis_center">
                             <input
                                 type="email"
                                 id="email"
                                 value={email}
                                 className="input_field"
                                 placeholder="Enter Email"
-                                onClick={handleFormData}
+                                onChange={handleFormData}
                             />
                         </div>
 
-                        <div className="for_pass_visi form_elements">
+                        <div className="for_pass_visi form_elements y_axis_center">
                             <input
                                 type={showPassword ? "text" : "password"}
                                 id="password"
                                 value={password}
                                 className="input_field"
                                 placeholder="Enter Password"
-                                onClick={handleFormData}
+                                onChange={handleFormData}
                             />
 
                             {
@@ -105,13 +108,13 @@ const Authenticate = () => {
                             }
                         </div>
 
-                        <div className="form_button form_elements">
+                        <div className="form_elements form_sub_button">
                             <button type="submit">submit</button>
                         </div>
                     </form>
 
                     <div className="form_elements y_axis_center">
-                        <NavLink className="register_link child_form_elements">register</NavLink>
+                        <NavLink to="/Register" className="register_link child_form_elements">register</NavLink>
 
                         <div className="forgot_pass child_form_elements"></div>
                     </div>

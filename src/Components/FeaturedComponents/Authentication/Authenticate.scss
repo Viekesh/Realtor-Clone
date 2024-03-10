@@ -1,2 +1,60 @@
-// Register
+$authenticateBorder: 3px solid black;
+$formBorder: 3px solid blue;
+$formMargin: 15vh auto;
+$formWidth: 80%;
+$formElementsBorder: 1px solid gray;
+$formElementsBorderRad: 12px;
+$formElementsMargin: 0 auto 6vh auto;
+$formElementsPad: 1vh;
+$formElementsWid: 90%;
+$formElementsHeight: 54px;
+$formElementsPos: relative;
+$formInputFontFam: "Kanit", sans-serif;
+$formInputFontSize: 15px;
+$formInputFontWei: 300;
+$formSubBtnBor: 0px solid gray;
+$formSubBtnRad: 12px;
+$formSubBtnPad: 0;
+$formSubBtnWid: 100%;
+$formSubBtnHei: 100%;
+$formSubBtnBoxSha: 3px 1px 6px gray;
 
+
+
+.authenticate {
+    border: $authenticateBorder;
+}
+
+.authenticate form {
+    // border: $formBorder;
+    margin: $formMargin;
+    width: $formWidth;
+}
+
+.authenticate form .form_elements {
+    border: $formElementsBorder;
+    border-radius: $formElementsBorderRad;
+    margin: $formElementsMargin;
+    padding: $formElementsPad;
+    width: $formElementsWid;
+    height: $formElementsHeight;
+    position: $formElementsPos;
+}
+
+.authenticate form .form_elements .input_field {
+    font-family: $formInputFontFam;
+    font-size: $formInputFontSize;
+    font-weight: $formInputFontWei;
+}
+
+.authenticate .form_elements.form_sub_button {
+    border: $formSubBtnBor;
+    padding: $formSubBtnPad;
+    box-shadow: $formSubBtnBoxSha;
+}
+
+.authenticate .form_elements button {
+    border-radius: $formSubBtnRad;
+    width: $formSubBtnWid;
+    height: $formSubBtnHei;
+}
