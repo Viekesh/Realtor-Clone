@@ -104,7 +104,7 @@ const Register = () => {
 
                 <div className="register">
 
-                    <form>
+                    <form onSubmit={submitFormData}>
                         <div className="form_elements y_axis_center">
                             <input
                                 type="text"

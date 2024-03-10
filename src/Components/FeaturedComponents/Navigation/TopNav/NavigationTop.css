@@ -2,6 +2,8 @@
     /* border: 3px solid red; */
     height: 9vh;
     position: fixed;
+
+    z-index: 999;
 }
 
 .navigation_top>.navigation_elements {

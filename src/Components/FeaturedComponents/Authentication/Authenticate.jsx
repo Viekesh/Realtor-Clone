@@ -73,7 +73,7 @@ const Authenticate = () => {
 
                 <div className="sign_in">
 
-                    <form>
+                    <form onSubmit={submitSignInForm}>
                         <div className="form_elements y_axis_center">
                             <input
                                 type="email"

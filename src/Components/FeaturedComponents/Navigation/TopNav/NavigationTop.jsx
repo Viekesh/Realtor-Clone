@@ -38,26 +38,26 @@ const NavigationTop = () => {
                         </div>
                     </div>
                 </section>
-
-                <section className={`navigation_links x_y_axis_center ${isMenuOpen === true ? "navigation_overlay" : ""}`}>
-                    <div className="nav_link">
-                        <div className="links_conatainer">
-                            {
-                                NavigationLinks.map((data) => {
-                                    return (
-                                        <>
-                                            <div className="link_options">
-                                                <NavLink to={data.navlink} key={data.id}>{data.name}</NavLink>
-                                            </div>
-                                        </>
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>
-                    <div className="box_overlay" onClick={handleOverlayClick}></div>
-                </section>
             </nav>
+
+            <section className={`navigation_links x_y_axis_center ${isMenuOpen === true ? "navigation_overlay" : ""}`}>
+                <div className="nav_link">
+                    <div className="links_conatainer">
+                        {
+                            NavigationLinks.map((data) => {
+                                return (
+                                    <>
+                                        <div className="link_options">
+                                            <NavLink to={data.navlink} key={data.id}>{data.name}</NavLink>
+                                        </div>
+                                    </>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+                <div className="box_overlay" onClick={handleOverlayClick}></div>
+            </section>
         </>
     )
 

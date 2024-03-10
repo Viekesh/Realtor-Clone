@@ -2,6 +2,7 @@ $authenticateBorder: 3px solid black;
 $formBorder: 3px solid blue;
 $formMargin: 15vh auto;
 $formWidth: 80%;
+
 $formElementsBorder: 1px solid gray;
 $formElementsBorderRad: 12px;
 $formElementsMargin: 0 auto 6vh auto;
@@ -9,15 +10,18 @@ $formElementsPad: 1vh;
 $formElementsWid: 90%;
 $formElementsHeight: 54px;
 $formElementsPos: relative;
+
 $formInputFontFam: "Kanit", sans-serif;
 $formInputFontSize: 15px;
 $formInputFontWei: 300;
+
 $formSubBtnBor: 0px solid gray;
 $formSubBtnRad: 12px;
 $formSubBtnPad: 0;
 $formSubBtnWid: 100%;
 $formSubBtnHei: 100%;
 $formSubBtnBoxSha: 3px 1px 6px gray;
+$formTextTrans: capitalize;
 
 
 
@@ -57,4 +61,5 @@ $formSubBtnBoxSha: 3px 1px 6px gray;
     border-radius: $formSubBtnRad;
     width: $formSubBtnWid;
     height: $formSubBtnHei;
+    text-transform: $formTextTrans;
 }
