@@ -1,8 +1,12 @@
+// Authentication
 $authenticateBorder: 3px solid black;
 $formBorder: 3px solid blue;
 $formMargin: 15vh auto;
 $formWidth: 80%;
 
+
+
+// Authentication Form Elements
 $formElementsBorder: 1px solid gray;
 $formElementsBorderRad: 12px;
 $formElementsMargin: 0 auto 6vh auto;
@@ -11,30 +15,64 @@ $formElementsWid: 90%;
 $formElementsHeight: 54px;
 $formElementsPos: relative;
 
+
+
 $formInputFontFam: "Kanit", sans-serif;
 $formInputFontSize: 15px;
 $formInputFontWei: 300;
 
-$formSubBtnBor: 0px solid gray;
+$formSubBtnBor: 3px solid gray;
 $formSubBtnRad: 12px;
+$formSubBtnMar: 0 auto;
 $formSubBtnPad: 0;
-$formSubBtnWid: 100%;
-$formSubBtnHei: 100%;
-$formSubBtnBoxSha: 3px 1px 6px gray;
-$formTextTrans: capitalize;
+$formSubBtnWid: 90%;
+$formSubBtnHei: 54px;
+$formSubBtnBoxSha: 3px 1px 9px gray;
+$formTextTrans: Uppercase;
+
+$buttonBor: 0px solid gray;
+$buttonWid: 100%;
+$buttonHei: 100%;
+$buttonBgColor: lightgray;
+$buttonFontFam: "Kanit", sans-serif;
+$buttonFontSize: 15px;
+$buttonFontWeight: 400;
 
 
 
+// Authentication Form Child Elements
+$authChildElementsBor: 3px solid red;
+$authChildElementsBorRad: 50%;
+$authChildElementsMar: 60px auto;
+$authChildElementsWid: 90%;
+$authChildElementsJustifyCon: space-between;
+$authChildElementsFontFam: "Kanit", sans-serif;
+$authChildElementsFontSize: 18px;
+$authChildElementsFontWei: 300;
+$authChildElementsPara: 50%;
+$authChildElementsTextTra: capitalize;
+$authChildElementsBtnWid: 54px;
+$authChildElementsBtnHei: 54px;
+$authChildElementsBtnBg: lightgray;
+
+
+
+
+
+// Authentication
 .authenticate {
     border: $authenticateBorder;
 }
 
-.authenticate form {
+.authenticate .auth_elements {
     // border: $formBorder;
     margin: $formMargin;
     width: $formWidth;
 }
 
+
+
+// Authentication Form Elements
 .authenticate form .form_elements {
     border: $formElementsBorder;
     border-radius: $formElementsBorderRad;
@@ -45,21 +83,90 @@ $formTextTrans: capitalize;
     position: $formElementsPos;
 }
 
-.authenticate form .form_elements .input_field {
-    font-family: $formInputFontFam;
-    font-size: $formInputFontSize;
-    font-weight: $formInputFontWei;
+.authenticate .form_elements {
+    justify-content: space-between;
 }
 
-.authenticate .form_elements.form_sub_button {
-    border: $formSubBtnBor;
-    padding: $formSubBtnPad;
+.authenticate .auth_elements form .form_sub_button {
+    // border: $formSubBtnBor;
+    border-radius: $formSubBtnRad;
+    margin: $formSubBtnMar;
+    width: $formSubBtnWid;
+    height: $formSubBtnHei;
     box-shadow: $formSubBtnBoxSha;
 }
 
-.authenticate .form_elements button {
+.authenticate .auth_elements form .form_sub_button button {
+    border: $buttonBor;
     border-radius: $formSubBtnRad;
-    width: $formSubBtnWid;
-    height: $formSubBtnHei;
+    width: $buttonWid;
+    height: $buttonHei;
     text-transform: $formTextTrans;
+    background-color: $buttonBgColor;
+    font-family: $buttonFontFam;
+    font-size: $buttonFontSize;
+    font-weight: $buttonFontWeight;
+}
+
+.authenticate .auth_elements .auth_child_elements {
+    // border: $authChildElementsBor;
+    margin: $authChildElementsMar;
+    width: $authChildElementsWid;
+    justify-content: space-between;
+}
+
+.authenticate .auth_elements .auth_child_elements p {
+    // border: 3px solid gray;
+    width: 72%;
+    font-family: "Kanit", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+.authenticate .auth_elements .auth_child_elements .register_link {
+    border-radius: $authChildElementsBorRad;
+    width: $authChildElementsBtnWid;
+    height: $authChildElementsBtnHei;
+    background-color: $authChildElementsBtnBg;
+    box-shadow: 3px 1px 9px gray;
+}
+
+
+
+// GAuth
+
+.sign_in_methods .g_auth {
+    border-radius: 50%;
+    background-color: lightgray;
+    box-shadow: 3px 1px 6px gray;
+}
+
+.sign_in_methods .g_auth svg {
+    font-size: 45px;
+}
+
+// .sign_in_methods {
+//     // border: 3px solid black;
+//     justify-content: space-between;
+// }
+
+// .sign_in_methods svg {
+//     font-size: 36px;
+// }
+
+// .sign_in_methods .g_auth {
+//     margin: 0;
+//     padding: 0;
+// }
+
+// .sign_in_methods .g_auth button {
+//     margin: 0;
+//     padding: 0;
+// }
+
+@media only screen and (min-width: 768px) {
+    .g_auth {
+        display: block;
+    }
 }

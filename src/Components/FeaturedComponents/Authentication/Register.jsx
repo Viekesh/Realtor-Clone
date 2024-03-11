@@ -102,7 +102,7 @@ const Register = () => {
                 <NavigationTop />
                 <MainHead mainHead="Register:" />
 
-                <div className="register">
+                <div className="auth_elements">
 
                     <form onSubmit={submitFormData}>
                         <div className="form_elements y_axis_center">

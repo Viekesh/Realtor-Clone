@@ -6,6 +6,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../FirebaseConfig";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { FaUserPlus } from "react-icons/fa";
+import GAuth from "./GAuth";
 
 
 
@@ -30,6 +32,7 @@ const Authenticate = () => {
     };
 
     const userNavigateAfterSignIn = useNavigate();
+
 
     const eyeVisi = () => {
         setShowPassword((prevState) => !prevState);
@@ -71,7 +74,7 @@ const Authenticate = () => {
                 <NavigationTop />
                 <MainHead mainHead="Sign In:" />
 
-                <div className="sign_in">
+                <div className="auth_elements">
 
                     <form onSubmit={submitSignInForm}>
                         <div className="form_elements y_axis_center">
@@ -108,16 +111,27 @@ const Authenticate = () => {
                             }
                         </div>
 
-                        <div className="form_elements form_sub_button">
-                            <button type="submit">submit</button>
+                        <div className="form_sub_button x_y_axis_center">
+                            <button type="submit" className="x_y_axis_center">submit</button>
                         </div>
                     </form>
 
-                    <div className="form_elements y_axis_center">
-                        <NavLink to="/Register" className="register_link child_form_elements">register</NavLink>
 
-                        <div className="forgot_pass child_form_elements"></div>
+
+                    <div className="auth_child_elements y_axis_center">
+                        <p>don't have an account? register here.</p>
+                        <NavLink to="/Register" className="register_link child_form_elements x_y_axis_center">
+                            <FaUserPlus />
+                        </NavLink>
                     </div>
+
+                    <div className="auth_child_elements">
+                        <p>sign in with different account.</p>
+                        <div className="sign_in_methods y_axis_center">
+                            <GAuth />
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </>
