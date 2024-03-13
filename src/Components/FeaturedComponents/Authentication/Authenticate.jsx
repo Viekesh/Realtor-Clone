@@ -8,10 +8,13 @@ import { auth } from "../../../FirebaseConfig";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { FaUserPlus } from "react-icons/fa";
 import GAuth from "./GAuth";
+import Spinner from "../../CommonModules/Spinner/Spinner";
 
 
 
 const Authenticate = () => {
+
+    const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState({
         email: "",
@@ -42,6 +45,8 @@ const Authenticate = () => {
 
         event.preventDefault();
 
+        setLoading(true);
+
         try {
 
             if (email && password) {
@@ -50,6 +55,8 @@ const Authenticate = () => {
                     email,
                     password
                 );
+
+                setLoading(false);
 
                 if (userCredential.user) {
                     alert("Your Are Successfully Signed In");
@@ -73,6 +80,10 @@ const Authenticate = () => {
             <section className="authenticate">
                 <NavigationTop />
                 <MainHead mainHead="Sign In:" />
+
+                {
+                    loading ? <div className="load"><Spinner /></div> : ""
+                }
 
                 <div className="auth_elements">
 

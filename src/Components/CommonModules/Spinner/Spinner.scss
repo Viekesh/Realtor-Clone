@@ -1,17 +1,20 @@
 .spinner_svg {
-    border: 2px solid red;
     width: 100vw;
-    height: 100vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    background: rgba(101, 111, 248, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+    background: rgba(128, 128, 128, 0.30);
+    box-shadow: 0 8px 32px 0 rgba(128, 128, 128, 0.30);
     backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(18px);
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    position: fixed;
+    top: 20vh;
+
+    z-index: 999 !important;
 }
 
 
@@ -26,8 +29,10 @@
 }
 
 .ldio-8xouyspi6vq div {
+    // border: 6px solid green;
     border-radius: 50%;
-    box-sizing: border-box !important
+    box-sizing: border-box !important;
+    background-color: transparent;
 }
 
 .ldio-8xouyspi6vq>div {
@@ -38,7 +43,7 @@
     left: 28px;
     border-radius: 50%;
     border: 16px solid #000;
-    border-color: #000000 transparent #000000 transparent;
+    border-color: snow transparent snow transparent;
     animation: ldio-8xouyspi6vq 1s linear infinite;
 }
 
@@ -75,15 +80,15 @@
     height: 16px;
     top: -16px;
     left: 48px;
-    background: #000000;
+    background: snow;
     border-radius: 50%;
-    box-shadow: 0 128px 0 0 #000000;
+    box-shadow: 0 128px 0 0 snow;
 }
 
 .ldio-8xouyspi6vq>div:nth-child(3) div:after {
     left: -16px;
     top: 48px;
-    box-shadow: 128px 0 0 0 #000000;
+    box-shadow: 128px 0 0 0 snow;
 }
 
 .ldio-8xouyspi6vq>div:nth-child(4) {
@@ -123,7 +128,7 @@
     height: 200px;
     display: inline-block;
     overflow: hidden;
-    background: #ffffff;
+    background: transparent;
 }
 
 .ldio-8xouyspi6vq {
@@ -132,7 +137,7 @@
     position: relative;
     transform: translateZ(0) scale(1);
     backface-visibility: hidden;
-    webkit-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     transform-origin: 0 0;
     /* see note above */
 }

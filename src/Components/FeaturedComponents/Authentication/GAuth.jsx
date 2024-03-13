@@ -1,9 +1,10 @@
 import { GoogleAuthProvider, getRedirectResult, signInWithRedirect } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { auth, database } from "../../../FirebaseConfig";
+import { app, auth, database } from "../../../FirebaseConfig";
 import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { initializeApp } from "firebase/app";
 
 
 

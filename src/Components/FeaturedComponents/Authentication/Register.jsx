@@ -83,7 +83,7 @@ const Register = () => {
 
                 alert("You Have Successfully Registered!");
 
-                userNavigateAfterSignUp("/SignIn");
+                userNavigateAfterSignUp("/Authenticate");
             } else {
                 return alert("All Fields Are Mandatory");
             }

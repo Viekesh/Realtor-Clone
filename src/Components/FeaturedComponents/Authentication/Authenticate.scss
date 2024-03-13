@@ -146,24 +146,41 @@ $authChildElementsBtnBg: lightgray;
     font-size: 45px;
 }
 
-// .sign_in_methods {
-//     // border: 3px solid black;
-//     justify-content: space-between;
-// }
 
-// .sign_in_methods svg {
-//     font-size: 36px;
-// }
 
-// .sign_in_methods .g_auth {
-//     margin: 0;
-//     padding: 0;
-// }
+// Profile
 
-// .sign_in_methods .g_auth button {
-//     margin: 0;
-//     padding: 0;
-// }
+.user_info {
+    margin: 9vh auto 0 auto;
+    padding: 18px;
+}
+
+.user_info .user_name input {
+    font-family: "Kanit", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.user_info .user_details {
+    padding: 9px 0;
+    justify-content: space-between;
+}
+
+.user_info .user_details .btn {
+    border: 3px solid lightgray;
+    border-radius: 50%;
+    padding: 6px;
+    width: 60px;
+    height: 60px;
+    font-family: "Kanit", sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+    background-color: lightgrey;
+    box-shadow: 3px 1px 9px gray;
+}
 
 @media only screen and (min-width: 768px) {
     .g_auth {

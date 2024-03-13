@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-
 import "./CreateList.scss";
-import { auth, database, storage } from '../../FirebaseConfig';
 import { v4 as uuidv4 } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import Nav from '../Navigation/Nav';
-import Spinner from '../Spinner/Spinner';
 import { useNavigate } from 'react-router-dom';
+import { auth, database, storage } from '../../../FirebaseConfig';
+import NavigationTop from '../Navigation/TopNav/NavigationTop';
+import Spinner from '../../CommonModules/Spinner/Spinner';
 
 const CreateList = () => {
 
@@ -203,7 +202,6 @@ const CreateList = () => {
         // delete formDataCopy.latitude;
 
         try {
-
             const docRef = await addDoc(collection(database, "RealtorCloneListing"), {
                 ...formDataCopy,
             });
@@ -232,7 +230,7 @@ const CreateList = () => {
 
     return (
         <>
-            <Nav />
+            <NavigationTop />
             <div className='create_list'>
                 <div className="heading">
                     <h1>Enter Details</h1>

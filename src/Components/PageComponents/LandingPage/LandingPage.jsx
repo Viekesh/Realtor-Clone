@@ -34,11 +34,13 @@ const LandingPage = () => {
             </header>
 
             <main>
+
                 <TabNav activeTab={activeTab} setActiveTab={setActiveTab} />
 
                 <div className="tab_screen">
                     {getTabScreen(activeTab)}
                 </div>
+
             </main>
         </>
     )

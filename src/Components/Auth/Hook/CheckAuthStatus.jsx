@@ -15,13 +15,13 @@ export const CheckAuthStatus = () => {
         const authenticate = auth;
 
         onAuthStateChanged(authenticate, (user) => {
-            if(user) {
+            if (user) {
                 setLoggedIn(true);
             }
             setCheckingStatus(false);
         });
     }, []);
-  return [loggedIn, checkingStatus];
+    return [loggedIn, checkingStatus];
 }
 
 
