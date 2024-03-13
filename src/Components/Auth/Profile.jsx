@@ -11,7 +11,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 // Imports Firestore-related functions for interacting with the Firebase Firestore database.
 import { collection, doc, getDocs, orderBy, query, where } from 'firebase/firestore';
-import { ListingAssets } from '../ListesdAssets/ListedAssets';
+import { ListingAssets } from '../FeaturedComponents/AddProp/ListesdAssets/ListedAssets';
 
 
 
