@@ -151,8 +151,10 @@ $authChildElementsBtnBg: lightgray;
 // Profile
 
 .user_info {
+    // border: 3px solid gray;
     margin: 9vh auto 0 auto;
-    padding: 18px;
+    padding: 54px 0 36px 0;
+    width: 80%;
 }
 
 .user_info .user_name input {
@@ -162,7 +164,10 @@ $authChildElementsBtnBg: lightgray;
 }
 
 .user_info .user_details {
-    padding: 9px 0;
+    border: 1px solid gray;
+    border-radius: 18px;
+    margin: 30px auto 0 auto;
+    padding: 6px;
     justify-content: space-between;
 }
 
@@ -179,7 +184,13 @@ $authChildElementsBtnBg: lightgray;
     text-transform: uppercase;
     color: black;
     background-color: lightgrey;
-    box-shadow: 3px 1px 9px gray;
+    // box-shadow: 3px 1px 9px gray;
+}
+
+.users_prop_data {
+    border: 3px solid gray;
+    margin: 33px auto;
+    width: 80%;
 }
 
 @media only screen and (min-width: 768px) {

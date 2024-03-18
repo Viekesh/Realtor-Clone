@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavigationTop from "../Navigation/TopNav/NavigationTop";
-import { auth } from "../../../FirebaseConfig";
+import { auth, database } from "../../../FirebaseConfig";
 import { NavLink, useNavigate } from "react-router-dom";
+import { collection, getDoc, orderBy, query, where } from "firebase/firestore";
 
 
 
@@ -23,6 +24,53 @@ const Profile = () => {
         afterSignOut("/");
         alert("You Are Successfully Logout");
     }
+
+
+
+    const [propList, setPropList] = useState(null);
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+
+        try {
+
+            const fetchUserPropList = async () => {
+
+                const listRef = collection(database, "RealtorCloneListing");
+
+                const qr = query(
+                    listRef,
+                    where("useRef", "==", auth.currentUser.uid),
+                    orderBy("timestamp", "desc"),
+                )
+
+                const qrSnap = await getDoc(qr);
+
+                let list = [];
+
+                qrSnap.forEach((doc) => {
+                    return (
+                        list.push({
+                            id: doc.id,
+                            data: doc.data(),
+                        })
+                    );
+                });
+
+                setPropList(list);
+
+                setLoading(false);
+            }
+
+            fetchUserPropList();
+        } catch (error) {
+            alert(error.message);
+            console.log(error.message);
+        };
+
+    }, [auth.currentUser.uid]);
+
     return (
         <>
             <section className="profile">
@@ -37,6 +85,17 @@ const Profile = () => {
                         <NavLink to="/CreateList" className="btn add_prop x_y_axis_center">add<br />property</NavLink>
                         <div className="btn log_out x_y_axis_center" onClick={onLogOut}>logout</div>
                     </div>
+                </div>
+
+                <div className="users_prop_data">
+
+                    {
+                        !loading && propList.length > 0 && (
+                            <>
+                                <h2>property list</h2>
+                            </>
+                        )
+                    }
                 </div>
 
             </section>
