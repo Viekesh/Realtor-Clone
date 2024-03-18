@@ -239,7 +239,7 @@ const CreateList = () => {
                 <form className="create_list_form" onSubmit={submitCreateListing}>
 
                     <div className="list_elements">
-                        <div className="form_buttons">
+                        <div className="form_buttons y_axis_center">
                             <button
                                 type="button"
                                 id="type"
@@ -304,7 +304,7 @@ const CreateList = () => {
                     </div>
 
                     <div className="list_elements">
-                        <div className="form_buttons">
+                        <div className="form_buttons y_axis_center">
                             <button
                                 type="button"
                                 id="furnished"
@@ -330,7 +330,7 @@ const CreateList = () => {
                     </div>
 
                     <div className="list_elements">
-                        <div className="form_buttons">
+                        <div className="form_buttons y_axis_center">
                             <button
                                 type="button"
                                 id="parking"
@@ -386,7 +386,7 @@ const CreateList = () => {
                     {
                         type === "rent" && (
                             <div className="list_elements">
-                                <div className="form_buttons">
+                                <div className="form_buttons y_axis_center">
                                     <button
                                         type="button"
                                         id="offer"
@@ -417,7 +417,7 @@ const CreateList = () => {
 
                     {
                         offer && (
-                            <div className="list_elements">
+                            <div className="list_elements y_axis_center">
                                 <input
                                     type="number"
                                     placeholder="Discount Price"

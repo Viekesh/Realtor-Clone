@@ -8,4 +8,4 @@ export const ListingAssets = ({ listItems, id }) => {
             </Link>
         </>
     )
-}
+};
