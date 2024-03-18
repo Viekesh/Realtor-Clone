@@ -1,11 +1,19 @@
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
+import "./ListedAssets.scss";
 
-export const ListingAssets = ({ listItems, id }) => {
+const ListingAssets = ({ id, data }) => {
+
+    console.log(data);
+
     return (
         <>
-            <Link to={`/category/${listItems.type}/${id}`}>
-                <img src={listItems.imgUrls[0]} alt="" />
-            </Link>
+            {/* <Link to={`/category/${data.type}/${id}`}>
+                <img src={data.imgUrls[0]} alt="" />
+            </Link> */}
         </>
     )
 };
+
+
+
+export default ListingAssets;

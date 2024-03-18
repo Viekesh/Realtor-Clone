@@ -96,12 +96,12 @@ const Profile = () => {
             setListings(listing);
 
             setLoading(false);
-
         }
 
         // Calls the fetchUserListings function to initiate data fetching.
         fetchUserListings();
     }, [auth.currentUser.uid]);
+
 
 
 
@@ -170,5 +170,7 @@ const Profile = () => {
         </>
     )
 }
+
+
 
 export default Profile;

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import NavigationTop from "../Navigation/TopNav/NavigationTop";
 import { auth, database } from "../../../FirebaseConfig";
 import { NavLink, useNavigate } from "react-router-dom";
-import { collection, getDoc, orderBy, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import ListingAssets from "../AddProp/ListesdAssets/ListedAssets";
 
 
 
@@ -45,7 +46,7 @@ const Profile = () => {
                     orderBy("timestamp", "desc"),
                 )
 
-                const qrSnap = await getDoc(qr);
+                const qrSnap = await getDocs(qr);
 
                 let list = [];
 
@@ -71,6 +72,8 @@ const Profile = () => {
 
     }, [auth.currentUser.uid]);
 
+
+
     return (
         <>
             <section className="profile">
@@ -93,6 +96,20 @@ const Profile = () => {
                         !loading && propList.length > 0 && (
                             <>
                                 <h2>property list</h2>
+
+                                {
+                                    propList.map((listElements) => {
+                                        return (
+                                            <>
+                                                <ListingAssets
+                                                    key={listElements.id}
+                                                    id={listElements.id}
+                                                    data={listElements.data}
+                                                />
+                                            </>
+                                        )
+                                    })
+                                }
                             </>
                         )
                     }
