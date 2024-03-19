@@ -190,7 +190,25 @@ $authChildElementsBtnBg: lightgray;
 .users_prop_data {
     border: 3px solid gray;
     margin: 33px auto;
+    width: 100%;
+    height: 72vh;
+
+    overflow-y: scroll;
+    position: relative;
+}
+
+.users_prop_data .prop_head {
+    border: 3px solid gray;
+    width: 100%;
+    height: 6vh;
+}
+
+.users_prop_data h2 {
+    margin: 0 auto;
     width: 80%;
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
 }
 
 @media only screen and (min-width: 768px) {

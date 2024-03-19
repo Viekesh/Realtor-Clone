@@ -95,7 +95,9 @@ const Profile = () => {
                     {
                         !loading && propList.length > 0 && (
                             <>
-                                <h2>property list</h2>
+                                <div className="prop_head">
+                                    <h2>property list:</h2>
+                                </div>
 
                                 {
                                     propList.map((listElements) => {

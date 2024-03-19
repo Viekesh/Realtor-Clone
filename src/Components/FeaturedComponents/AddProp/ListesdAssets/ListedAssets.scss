@@ -1,17 +1,44 @@
 .listing_assets {
-    border: 3px solid blue;
-    margin: 9px auto;
-    height: fit-content;
+    border: 1px solid gray;
+    padding: 9px;
+    margin: 12vh auto;
+    width: 80%;
 }
 
-.prop_img {
-    border: 3px solid blue;
-    margin: 3px auto;
+.listing_assets img {
+    border: 3px solid red;
     width: 100%;
-    height: 30vh;
+    height: 21vh;
 }
 
-.prop_img img {
+.listing_assets img .img {
     width: 100%;
-    height: 180px;
+}
+
+.listing_assets .prop_details {
+    border: 3px solid black;
+    margin: 1vh auto;
+    width: 98%;
+    font-family: "Kanit", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+.listing_assets .prop_features ul li {
+    width: 98%;
+    font-family: "Kanit", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    list-style-type: none;
+}
+
+.listing_assets .prop_features ul li::before {
+    content: "\2022";
+    display: inline-block;
+    width: 1em;
+    font-weight: bolder;
+    font-size: 15px;
+    // color: #ff9900;
+    color: black;
 }
