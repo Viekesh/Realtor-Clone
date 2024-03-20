@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import NavigationTop from "../Navigation/TopNav/NavigationTop";
 import { auth, database } from "../../../FirebaseConfig";
 import { NavLink, useNavigate } from "react-router-dom";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, orderBy, query, where } from "firebase/firestore";
 import ListingAssets from "../AddProp/ListesdAssets/ListedAssets";
+import { FaEdit } from "react-icons/fa";
 
 
 
@@ -18,11 +19,11 @@ const Profile = () => {
     const { name, email } = formData;
 
     // Retrieves a navigation function for redirecting after logout.
-    const afterSignOut = useNavigate();
+    const navigateTo = useNavigate();
 
     const onLogOut = () => {
         auth.signOut();
-        afterSignOut("/");
+        navigateTo("/");
         alert("You Are Successfully Logout");
     }
 
@@ -74,6 +75,26 @@ const Profile = () => {
 
 
 
+    const ListEdit = (listingId) => {
+        navigateTo(`/edit-listing/${listingId}`);
+    };
+
+
+
+    const ListDelete = async (listingId) => {
+        if (window.confirm("Are You Sure You Want To Delete?")) {
+            await deleteDoc(doc(database, "RealtorCloneListing", listingId));
+            const updatedListing = propList.filter(
+                (listing) => listing.id !== listingId
+            );
+
+            setPropList(updatedListing);
+            alert("You Have Successfully Deleted");
+        }
+    };
+
+
+
     return (
         <>
             <section className="profile">
@@ -107,6 +128,8 @@ const Profile = () => {
                                                     key={listElements.id}
                                                     id={listElements.id}
                                                     data={listElements.data}
+                                                    onEdit={() => ListEdit(listElements.id)}
+                                                    onDelete={() => ListDelete(listElements.id)}
                                                 />
                                             </>
                                         )
