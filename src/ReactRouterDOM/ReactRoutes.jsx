@@ -5,6 +5,7 @@ import Register from "../Components/FeaturedComponents/Authentication/Register";
 import Profile from "../Components/FeaturedComponents/Authentication/Profile";
 import ProtectedRoutes from "./ProtectedRoutes";
 import CreateList from "../Components/FeaturedComponents/AddProp/CreateList";
+import EditList from "../Components/FeaturedComponents/AddProp/EditProp/EditList";
 
 
 
@@ -23,6 +24,10 @@ const ReactRoutes = () => {
 
                 <Route exact path="/CreateList" element={<ProtectedRoutes />}>
                     <Route exact path="/CreateList" element={<CreateList />}></Route>
+                </Route>
+
+                <Route exact path="/EditList" element={<ProtectedRoutes />}>
+                    <Route exact path="/EditList/:listingId" element={<EditList />}></Route>
                 </Route>
             </Routes>
         </>

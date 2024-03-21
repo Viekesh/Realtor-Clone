@@ -4,7 +4,6 @@ import { auth, database } from "../../../FirebaseConfig";
 import { NavLink, useNavigate } from "react-router-dom";
 import { collection, deleteDoc, doc, getDocs, orderBy, query, where } from "firebase/firestore";
 import ListingAssets from "../AddProp/ListesdAssets/ListedAssets";
-import { FaEdit } from "react-icons/fa";
 
 
 
@@ -76,7 +75,7 @@ const Profile = () => {
 
 
     const ListEdit = (listingId) => {
-        navigateTo(`/edit-listing/${listingId}`);
+        navigateTo(`/EditList/${listingId}`);
     };
 
 
