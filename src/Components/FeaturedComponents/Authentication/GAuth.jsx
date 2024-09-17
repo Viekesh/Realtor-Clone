@@ -72,11 +72,13 @@ const GAuth = () => {
                 console.log("New user registered in database");
             };
 
-            navigateAfterSignInWithGoogle("/Profile"); // Redirect after successful sign-in
+            // Redirect after successful sign-in
+            navigateAfterSignInWithGoogle("/Profile");
 
         } catch (error) {
 
-            alert(error.message); // More user-friendly error message
+            // More user-friendly error message
+            alert(error.message);
             console.log(error.message);
 
         }
@@ -91,7 +93,7 @@ const GAuth = () => {
             </section>
         </>
     )
-}
+};
 
 
 

@@ -70,7 +70,6 @@
 
 .navigation_links.navigation_overlay {
     transform: translateX(0%);
-    /* width: 100vw; */
 }
 
 .navigation_links>.nav_link {

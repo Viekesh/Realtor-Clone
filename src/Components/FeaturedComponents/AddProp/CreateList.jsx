@@ -8,6 +8,8 @@ import { auth, database, storage } from '../../../FirebaseConfig';
 import NavigationTop from '../Navigation/TopNav/NavigationTop';
 import Spinner from '../../CommonModules/Spinner/Spinner';
 
+
+
 const CreateList = () => {
 
     const navigate = useNavigate();
@@ -28,6 +30,7 @@ const CreateList = () => {
         discountPrice: "",
         images: [],
     });
+
 
 
     // destructure the initial values (formData information) which we have defined in the above "useState" hook otherwise we will get an error
@@ -98,7 +101,6 @@ const CreateList = () => {
     const submitCreateListing = async (event) => {
 
         // first we need to prevent the defualt behavior of refreshing the page by just getting event here
-
         event.preventDefault();
 
         setLoading(true);
@@ -121,7 +123,9 @@ const CreateList = () => {
 
             return new Promise((resolve, reject) => {
 
-                // In order to keep image completly unique, for ex the person upload the same image two times then we add some random numbers and letters, in order to do that we use a package called "uuid".
+                // In order to keep image completly unique, for ex the person upload the same image two times 
+                // then we add some random numbers and letters, in order to do that we use a package called 
+                // "uuid".
 
                 const filename = `${auth.currentUser.uid} - ${image.name} - ${uuidv4()}`
 
@@ -132,7 +136,8 @@ const CreateList = () => {
                 uploadTask.on("state_changed", (snapshot) => {
 
                     // Observe state change events such as progress, pause, and resume
-                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                    // Get task progress, including the number of bytes uploaded and the total number of bytes to 
+                    // be uploaded
 
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
@@ -181,7 +186,8 @@ const CreateList = () => {
                 alert("Images Not Uploaded");
                 console.log(error.message);
                 return;
-            });
+            }
+            );
 
         const formDataCopy = {
 
